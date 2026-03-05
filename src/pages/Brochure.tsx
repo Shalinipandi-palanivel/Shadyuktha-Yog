@@ -260,10 +260,10 @@ const Brochure = () => {
       {/* CTA */}
       <section className="section-padding gradient-green text-primary-foreground text-center">
         <AnimateOnScroll>
-          <h2 className="font-serif text-3xl font-bold mb-4">
+          <h2 className="font-serif text-3xl text-white font-bold mb-4">
             Need More Information?
           </h2>
-          <p className="opacity-90 max-w-xl mx-auto mb-6">
+          <p className="opacity-90 max-w-xl text-white mx-auto mb-6">
             Contact us to receive digital copies of all brochures or to schedule
             a consultation about any program.
           </p>
