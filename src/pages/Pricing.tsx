@@ -695,7 +695,7 @@ const Pricing = () => {
               ))}
             </div>
             <Link
-              to="/#contact"
+              to="/Shadyuktha-Yog/#contact"
               className="inline-block mt-8 bg-background text-primary px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity"
             >
               Enroll Now

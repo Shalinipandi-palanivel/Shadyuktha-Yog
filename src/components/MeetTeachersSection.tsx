@@ -37,7 +37,7 @@ const MeetTeachersSection = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/teachers" className="gradient-green text-primary-foreground px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 hover:opacity-90 transition-opacity">
+          <Link to="/Shadyuktha-Yog/teachers" className="gradient-green text-primary-foreground px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 hover:opacity-90 transition-opacity">
             View All Teachers <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

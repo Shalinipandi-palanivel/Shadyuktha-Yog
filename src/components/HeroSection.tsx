@@ -117,13 +117,13 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/allprograms">
+              <Link to="/Shadyuktha-Yog/allprograms">
                 <button className="px-8 py-4 bg-primary font-semibold text-primary-foreground rounded-full font-sans tracking-wide hover:bg-secondary hover:text-secondary-foreground hover:font-semibold transition-all w-full sm:w-auto shadow-lg hover:shadow-xl">
                   Explore All Programs
                 </button>
               </Link>
 
-              <Link to="/contact">
+              <Link to="/Shadyuktha-Yog/contact">
                 <button className="px-8 py-4 bg-secondary font-bold text-secondary-foreground rounded-full font-sans tracking-wide hover:bg-primary hover:text-primary-foreground hover:font-md transition-all w-full sm:w-auto shadow-lg hover:shadow-xl">
                   Enquire Now
                 </button>
@@ -191,7 +191,7 @@ const HeroSection = () => {
                 Courses and Integrated Wellness Program.
               </p>
               <Link
-                to="/YCBcourse"
+                to="/Shadyuktha-Yog/YCBcourse"
                 className="inline-block w-full text-center bg-white text-green-600 font-bold rounded-full py-2 hover:bg-green-50 transition-all"
               >
                Explore Courses

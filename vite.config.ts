@@ -11,8 +11,7 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
-  },
-    base: '/Shadyuktha-Yog/', 
+  }, 
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
   alias: {

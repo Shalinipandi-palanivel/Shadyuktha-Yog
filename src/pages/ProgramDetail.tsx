@@ -2677,7 +2677,7 @@ const YCBLayout = ({
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 space-y-6 md:space-y-8">
           <AnimateOnScroll>
             <Link
-              to="/Shadyuktha-Yog"
+              to="/"
               className="inline-flex gap-2 mb-5 text-sm text-white font-medium hover:underline"
             >
               <ArrowLeft className="w-4 h-4" /> Back to Home
@@ -3406,7 +3406,7 @@ const YogaProgramLayout = ({
             <AnimateOnScroll>
               {/* Back */}
               <Link
-                to="/Shadyuktha-Yog"
+                to="/"
                 className="inline-flex items-center gap-2 text-sm text-white font-medium mb-5 hover:underline justify-center"
               >
                 <ArrowLeft className="w-4 h-4" /> Back to Programs
@@ -3672,7 +3672,7 @@ const TherapeuticLayout = ({
             <AnimateOnScroll>
               {/* Back Button */}
               <Link
-                to="/Shadyuktha-Yog"
+                to="/"
                 className="inline-flex items-center gap-2 text-sm text-white font-medium mb-6 hover:underline justify-center"
               >
                 <ArrowLeft className="w-4 h-4" /> Back to Home
@@ -4094,7 +4094,7 @@ const MindBodyLayout = ({
             <AnimateOnScroll>
               {/* Back Button */}
               <Link
-                to="/Shadyuktha-Yog"
+                to="/"
                 className="inline-flex items-center gap-2 text-sm text-white font-medium mb-6 hover:underline justify-center"
               >
                 <ArrowLeft className="w-4 h-4" /> Back to Home
@@ -4289,7 +4289,7 @@ const AshtangaLayout = ({
             <AnimateOnScroll>
               {/* Back Button */}
               <Link
-                to="/Shadyuktha-Yog"
+                to="/"
                 className="inline-flex items-center gap-2 text-sm text-white font-medium mb-6 hover:underline justify-center"
               >
                 <ArrowLeft className="w-4 h-4" /> Back to Home
@@ -4498,7 +4498,7 @@ const PranayamaLayout = ({
             <AnimateOnScroll>
               {/* Back Button */}
               <Link
-                to="/Shadyuktha-Yog"
+                to="/"
                 className="inline-flex items-center gap-2 text-sm text-white font-medium mb-6 hover:underline justify-center"
               >
                 <ArrowLeft className="w-4 h-4" /> Back to Home
@@ -4788,7 +4788,7 @@ const KidsLayout = ({
           <div className="container mx-auto px-4 text-center max-w-4xl">
             <AnimateOnScroll>
               <Link
-                to="/Shadyuktha-Yog"
+                to="/"
                 className="inline-flex items-center gap-2 text-sm text-white font-medium mb-4 hover:underline justify-center"
               >
                 <ArrowLeft className="w-4 h-4" /> Back to Home
@@ -4968,7 +4968,7 @@ const PrenatalLayout = ({
             <AnimateOnScroll>
               {/* Back */}
               <Link
-                to="/Shadyuktha-Yog"
+                to="/"
                 className="inline-flex items-center gap-2 text-sm text-white font-medium mb-5 hover:underline justify-center"
               >
                 <ArrowLeft className="w-4 h-4" /> Back to Home
@@ -5193,7 +5193,7 @@ const ProgramDetail = () => {
         <h1 className="font-serif text-3xl font-bold text-foreground mb-4">
           Program Not Found
         </h1>
-        <Link to="/Shadyuktha-Yog" className="text-primary font-semibold">
+        <Link to="/" className="text-primary font-semibold">
           ← Back to Home
         </Link>
       </main>

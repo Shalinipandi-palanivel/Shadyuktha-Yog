@@ -316,7 +316,7 @@ const SadhanaLevelsSection = () => {
     //           </div>
     //         )}
     //         <p className="text-xs text-muted-foreground text-center mt-6">
-    //           * 3-Month programs available at discounted rates. See our <Link to="/pricing" className="text-primary font-semibold underline">Pricing page</Link> for details.
+    //           * 3-Month programs available at discounted rates. See our <Link to="/Shadyuktha-Yog/pricing" className="text-primary font-semibold underline">Pricing page</Link> for details.
     //         </p>
     //       </div>
     //     </AnimateOnScroll>
@@ -421,7 +421,7 @@ const SadhanaLevelsSection = () => {
                     </p>
                   </div>
 <div className="flex items-center justify-center sm:justify-between pt-4 border-t border-border">
-  <Link to="/contact">
+  <Link to="/Shadyuktha-Yog/contact">
     <Button
       className="rounded-full"
       data-testid="button-explore-personal"
@@ -567,7 +567,7 @@ const SadhanaLevelsSection = () => {
 
           {/* CTA */}
           <div className="text-center mt-20">
-            <Link to="/allprograms">
+            <Link to="/Shadyuktha-Yog/allprograms">
               <Button size="lg" className="rounded-full px-12 py-6 text-lg">
                 View All Programs
                 <ArrowRight className="ml-3 h-5 w-5" />
@@ -641,7 +641,7 @@ const SadhanaLevelsSection = () => {
                 <span className="text-lg font-bold text-primary">
                   From ₹2,000/month
                 </span>
-                <Link to="/contact">
+                <Link to="/Shadyuktha-Yog/contact">
                   <Button
                     className="rounded-full"
                     data-testid="button-explore-personal"
@@ -697,7 +697,7 @@ const SadhanaLevelsSection = () => {
                 <span className="text-lg font-bold text-primary">
                   From ₹8,000/month
                 </span>
-                <Link to="/contact">
+                <Link to="/Shadyuktha-Yog/contact">
                   <Button
                     className="rounded-full"
                     data-testid="button-explore-personal"

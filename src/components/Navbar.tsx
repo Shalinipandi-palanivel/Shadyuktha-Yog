@@ -50,7 +50,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link to="/Shadyuktha-Yog" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <img
               src={logo}
               alt="Shadyuktha Yog"
@@ -69,7 +69,7 @@ const Navbar = () => {
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-8">
             <Link
-              to="/Shadyuktha-Yog"
+              to="/"
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
               Home
@@ -168,13 +168,13 @@ const Navbar = () => {
           <div className="lg:hidden pb-6 animate-fade-in">
             <div className="flex flex-col gap-1">
               <Link
-                to="/Shadyuktha-Yog"
+                to="/"
                 className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
               >
                 Home
               </Link>
               <Link
-                to="/#about"
+                to="/aboutus"
                 className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
               >
                 About

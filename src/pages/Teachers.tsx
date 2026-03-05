@@ -255,7 +255,7 @@ const Teachers = () => {
             the centre of being."
           </p>
           <Link
-            to="/contact"
+            to="/Shadyuktha-Yog/contact"
             className="inline-block bg-background text-primary px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity"
           >
             Begin Now

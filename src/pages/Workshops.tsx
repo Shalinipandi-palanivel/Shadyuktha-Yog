@@ -502,7 +502,7 @@ const Workshops = () => {
                   </div>
 
                   <Link
-                    to="/#contact"
+                    to="/Shadyuktha-Yog/#contact"
                     className="mt-6 gradient-green text-primary-foreground py-3 rounded-full font-semibold text-center flex items-center justify-center gap-2 hover:opacity-90"
                   >
                     Enquire Now <ArrowRight className="w-4 h-4" />

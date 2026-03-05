@@ -208,7 +208,7 @@ const AboutUs = () => {
               Yog welcomes you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/allprograms" className="w-full sm:w-64">
+              <Link to="/Shadyuktha-Yog/allprograms" className="w-full sm:w-64">
                 <Button
                   size="lg"
                   className="rounded-full px-10 py-5 text-lg w-full"
@@ -216,7 +216,7 @@ const AboutUs = () => {
                   Explore Programs
                 </Button>
               </Link>
-              <Link to="/contact">
+              <Link to="/Shadyuktha-Yog/contact">
                 <Button
                   size="lg"
                   variant="outline"

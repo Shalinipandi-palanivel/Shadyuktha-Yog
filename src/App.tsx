@@ -34,6 +34,7 @@ const App = () => (
         <Navbar />
         <ScrollToTop />
         <Routes>
+          <Route path="/" element={<Index />} />
           <Route path="/Shadyuktha-Yog" element={<Index />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/workshops" element={<Workshops />} />
