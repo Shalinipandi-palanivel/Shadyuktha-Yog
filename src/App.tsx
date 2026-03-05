@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Index from "./pages/Index";
@@ -31,24 +32,24 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Navbar />
-        <ScrollToTop/>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/workshops" element={<Workshops />} />
-            <Route path="/testimonials" element={<TestimonialsPage />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/teachers" element={<Teachers />} />
-            <Route path="/brochure" element={<Brochure />} />
-            <Route path="/programs/:slug" element={<ProgramDetail />} />
-            <Route path="/allprograms" element={<ProgramsCardSection />} />
-            <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="YCBcourse" element={<YCB />} />
-            <Route path="wellnessprograms" element={<WellnessProgram />} />
-            <Route path="/contact" element={<ContactSection />} />
-          </Routes>
-      
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/workshops" element={<Workshops />} />
+          <Route path="/testimonials" element={<TestimonialsPage />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/teachers" element={<Teachers />} />
+          <Route path="/brochure" element={<Brochure />} />
+          <Route path="/programs/:slug" element={<ProgramDetail />} />
+          <Route path="/allprograms" element={<ProgramsCardSection />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="YCBcourse" element={<YCB />} />
+          <Route path="wellnessprograms" element={<WellnessProgram />} />
+          <Route path="/contact" element={<ContactSection />} />
+        </Routes>
+
         <Footer />
       </BrowserRouter>
     </TooltipProvider>
