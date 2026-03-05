@@ -2,6 +2,7 @@ import { AnimateOnScroll } from "../components/AnimateOnScroll";
 import aboutImg from "@/assets/about-yoga.jpg";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import shadyuktha from "../../public/images/hero-yoga.png";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -191,6 +192,13 @@ const AboutUs = () => {
         </section>
         {/* CTA */}
         <section className="py-16 bg-secondary/30">
+          <div className="w-full max-w-3xl mx-auto mb-20">
+            <img
+              src={shadyuktha}
+              alt="About Shadyuktha Yog"
+              className="rounded-2xl shadow-2xl w-full object-cover"
+            />
+          </div>
           <div className="container mx-auto px-4 text-center">
             <h3 className="font-serif text-3xl font-bold mb-4">
               Begin Your Journey of Self-Discovery
@@ -220,17 +228,6 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
-        {/* Founder */}
-        {/* <div className="mt-20 text-center max-w-3xl mx-auto">
-          <AnimateOnScroll>
-            <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-2">Founder-Director</p>
-            <h3 className="font-serif text-3xl font-bold text-foreground mb-4">Shalinipandi</h3>
-            <p className="text-sm text-muted-foreground italic mb-4">IT Professional | Yoga Practitioner | Wellness Educator</p>
-            <p className="text-muted-foreground leading-relaxed">
-              With a strong academic foundation in Engineering (B.E.) and Level 3 certification from YCB, she brings together analytical precision and holistic wellness. Her transition into yoga represents a conscious evolution—bridging technical discipline with inner awareness.
-            </p>
-          </AnimateOnScroll>
-        </div> */}
       </div>
     </section>
   );
