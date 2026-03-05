@@ -40,7 +40,7 @@ const Footer = () => {
           <div>
             <h4 className="font-serif text-lg font-semibold mb-4">Quick Links</h4>
             <div className="flex flex-col gap-2">
-              <Link to="/" className="text-sm opacity-80 hover:opacity-100 transition-opacity">Home</Link>
+              <Link to="/Shadyuktha-Yog" className="text-sm opacity-80 hover:opacity-100 transition-opacity">Home</Link>
               <Link to="/#about" className="text-sm opacity-80 hover:opacity-100 transition-opacity">About Us</Link>
               <Link to="/workshops" className="text-sm opacity-80 hover:opacity-100 transition-opacity">Workshops</Link>
               <Link to="/blogs" className="text-sm opacity-80 hover:opacity-100 transition-opacity">Blogs</Link>
