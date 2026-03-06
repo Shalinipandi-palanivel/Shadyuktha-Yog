@@ -145,7 +145,7 @@ const FlipWorkshopCard: React.FC<Props> = ({ workshop, region }) => {
       </div>
 
       <Link
-        to="/Shadyuktha-Yog/contact"
+        to="/contact"
         className="
           mt-4
           gradient-green

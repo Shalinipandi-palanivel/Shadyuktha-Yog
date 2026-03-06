@@ -8,7 +8,7 @@ const teachers = [
   {
     name: "Shalinipandi",
     role: "Founder-Director",
-    qualification: "B.E. (Engineering), YCB Level 3 Certified",
+    qualification: "B.E, YCB Level 3 Certified Yoga Teacher And Evaluator",
     bio: "Dedicated yoga practitioner and certified instructor committed to integrating classical yogic wisdom with modern professional life. Former IT professional with extensive corporate experience.",
     classes: [
       "YCB Level 1, 2, 3",
@@ -25,7 +25,7 @@ const teachers = [
     image: logo,
   },
   {
-    name: "Dr. Meera Krishnan",
+    name: "Brindha",
     role: "Therapeutic Yoga Lead",
     qualification: "BAMS, MSc Yoga Therapy, YCB Level 3",
     bio: "Specialist in evidence-based yoga therapy with deep expertise in the DPYT model. Combines Ayurvedic knowledge with modern therapeutic yoga for chronic condition management.",
@@ -255,7 +255,7 @@ const Teachers = () => {
             the centre of being."
           </p>
           <Link
-            to="/Shadyuktha-Yog/contact"
+            to="/contact"
             className="inline-block bg-background text-primary px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity"
           >
             Begin Now

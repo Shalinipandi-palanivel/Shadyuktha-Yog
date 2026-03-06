@@ -22,39 +22,45 @@ import ProgramsCardSection from "./components/ProgramsCardSection";
 import Contact from "./pages/Contact";
 import ContactSection from "./pages/ContactSection";
 import ScrollToTop from "./pages/ScrollToTop";
+import { useState } from "react";
+import FloatingWhatsAppButton from "./pages/FloatingWhatsappButton";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Navbar />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/Shadyuktha-Yog" element={<Index />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/workshops" element={<Workshops />} />
-          <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/teachers" element={<Teachers />} />
-          <Route path="/brochure" element={<Brochure />} />
-          <Route path="/programs/:slug" element={<ProgramDetail />} />
-          <Route path="/allprograms" element={<ProgramsCardSection />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="YCBcourse" element={<YCB />} />
-          <Route path="wellnessprograms" element={<WellnessProgram />} />
-          <Route path="/contact" element={<ContactSection />} />
-        </Routes>
+const App = () => {
+  const [selectedPost, setSelectedPost] = useState<any>(null);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Navbar selectedPost={selectedPost} />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/Shadyuktha-Yog" element={<Index />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/workshops" element={<Workshops />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/teachers" element={<Teachers />} />
+            <Route path="/brochure" element={<Brochure />} />
+            <Route path="/programs/:slug" element={<ProgramDetail />} />
+            <Route path="/allprograms" element={<ProgramsCardSection />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="YCBcourse" element={<YCB />} />
+            <Route path="wellnessprograms" element={<WellnessProgram />} />
+            <Route path="/contact" element={<ContactSection />} />
+          </Routes>
 
-        <Footer />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+          <Footer />
+          <FloatingWhatsAppButton />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

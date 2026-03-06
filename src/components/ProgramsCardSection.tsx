@@ -820,7 +820,7 @@ const ProgramsCardSection = () => {
                       </Link>
 
                       <Link
-                        to="/Shadyuktha-Yog/contact"
+                        to="/contact"
                         className="inline-flex items-center gap-2 
       bg-white hover:bg-primary hover:text-white
       text-primary px-6 py-2.5 rounded-full 
@@ -868,7 +868,7 @@ const ProgramsCardSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/Shadyuktha-Yog/contact">
+            <Link to="/contact">
               <button className="px-8 py-3 rounded-full border border-white/60 text-primary bg-white font-semibold hover:bg-primary/10 hover:text-white transition">
                 Talk to Us
               </button>

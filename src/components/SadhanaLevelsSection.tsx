@@ -6,8 +6,8 @@ import heroImg from "@/assets/hero-yoga.jpg";
 import ashtangaImg from "@/assets/ashtanga-yoga.jpg";
 import pranayamaImg from "@/assets/pranayama.jpg";
 import { Button } from "@/components/ui/button";
-
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import {
   Heart,
   Flower2,
@@ -35,6 +35,7 @@ import intermediateYoga from "@/assets/intermediate-yoga.jpg";
 import structuredYoga from "@/assets/structured-program.jpg";
 import dailyYoga from "@/assets/daily-practice.jpg";
 import regularYoga from "@/assets/regular-practice.jpg";
+import TiltImage from "./TiltImage";
 // const levels = [
 //   {
 //     icon: Leaf,
@@ -193,135 +194,6 @@ const SadhanaLevelsSection = () => {
   const [showAllFormats, setShowAllFormats] = useState(false);
 
   return (
-    // <section id="sadhana" className="section-padding bg-gradient-to-br from-secondary/60 via-background to-secondary/40 relative overflow-hidden">
-    //   {/* Vertical marquee left */}
-    //   <div className="absolute left-0 top-0 bottom-0 w-8 overflow-hidden opacity-5 hidden lg:block">
-    //     <div className="animate-marquee-up flex flex-col gap-4 whitespace-nowrap">
-    //       {[...Array(6)].map((_, i) => (
-    //         <span key={i} className="text-xs font-bold text-primary [writing-mode:vertical-lr]">ARAMBHA • MADHYAMA • UTTAMA • SADHANA</span>
-    //       ))}
-    //     </div>
-    //   </div>
-
-    //   <div className="container mx-auto relative z-10">
-    //     <AnimateOnScroll className="text-center mb-16">
-    //       <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-2">Progressive Path</p>
-    //       <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">
-    //         Levels of <span className="text-gradient-green">Sadhana</span>
-    //       </h2>
-    //       <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-    //         A progressive and systematic unfolding of practice tailored to individual capacity, readiness, and purpose.
-    //       </p>
-    //     </AnimateOnScroll>
-
-    //     {/* Level Cards with images */}
-    //     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-    //       {levels.map((lvl, i) => {
-    //         const Icon = lvl.icon;
-    //         const isExpanded = expandedLevel === i;
-    //         return (
-    //           <AnimateOnScroll key={lvl.level} animation="animate-fade-in-up" delay={i * 150}>
-    //             <div className={`rounded-3xl overflow-hidden border border-border shadow-lg bg-gradient-to-br ${lvl.color} hover-lift`}>
-    //               {/* Image */}
-    //               <div className="aspect-[16/9] overflow-hidden relative">
-    //                 <img src={lvl.image} alt={lvl.name} className="w-full h-full object-cover" />
-    //                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-    //                 <div className="absolute bottom-4 left-4 flex items-center gap-2">
-    //                   <div className="w-10 h-10 gradient-green rounded-full flex items-center justify-center">
-    //                     <Icon className="w-5 h-5 text-primary-foreground" />
-    //                   </div>
-    //                   <span className="font-serif text-sm font-bold text-foreground bg-background/80 px-3 py-1 rounded-full">{lvl.level}</span>
-    //                 </div>
-    //               </div>
-
-    //               <div className="p-6">
-    //                 <h3 className="font-serif text-xl font-bold text-foreground mb-2">{lvl.name}</h3>
-    //                 <p className="text-sm text-muted-foreground mb-4"><strong>Focus:</strong> {lvl.focus}</p>
-
-    //                 {/* Expandable content */}
-    //                 {isExpanded && (
-    //                   <div className="animate-fade-in space-y-4 mb-4">
-    //                     <div>
-    //                       <p className="text-sm font-semibold text-foreground mb-2">Core Practices:</p>
-    //                       <ul className="space-y-1.5">
-    //                         {lvl.practices.map((p) => (
-    //                           <li key={p} className="text-sm text-muted-foreground flex items-center gap-2">
-    //                             <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-    //                             {p}
-    //                           </li>
-    //                         ))}
-    //                       </ul>
-    //                     </div>
-    //                     <div className="pt-3 border-t border-border/50">
-    //                       <p className="text-xs font-semibold text-foreground mb-1">Who Should Attend:</p>
-    //                       <p className="text-xs text-muted-foreground leading-relaxed">{lvl.who}</p>
-    //                     </div>
-    //                   </div>
-    //                 )}
-
-    //                 <button
-    //                   onClick={() => setExpandedLevel(isExpanded ? null : i)}
-    //                   className="flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-    //                 >
-    //                   {isExpanded ? "Show Less" : "View More"}
-    //                   <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
-    //                 </button>
-    //               </div>
-    //             </div>
-    //           </AnimateOnScroll>
-    //         );
-    //       })}
-    //     </div>
-
-    //     {/* Practice Formats - Card style */}
-    //     <AnimateOnScroll>
-    //       <div className="max-w-5xl mx-auto">
-    //         <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground text-center mb-8">
-    //           Practice Format & <span className="text-gradient-green">Pricing</span>
-    //         </h3>
-    //         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    //           {(showAllFormats ? practiceFormats : practiceFormats.slice(0, 2)).map((pf, i) => (
-    //             <AnimateOnScroll key={pf.format} animation="animate-scale-in" delay={i * 100}>
-    //               <div className="bg-card rounded-2xl border border-border p-6 shadow-md hover-lift">
-    //                 <div className="flex items-center gap-3 mb-4">
-    //                   <span className="text-3xl">{pf.icon}</span>
-    //                   <div>
-    //                     <h4 className="font-serif text-lg font-bold text-foreground">{pf.format}</h4>
-    //                     <p className="text-xs text-muted-foreground">{pf.days}</p>
-    //                   </div>
-    //                 </div>
-    //                 <div className="grid grid-cols-3 gap-3">
-    //                   <div className="bg-secondary rounded-xl p-3 text-center">
-    //                     <p className="text-xs text-muted-foreground mb-1">Beginner</p>
-    //                     <p className="font-serif text-lg font-bold text-primary">{pf.beginner}</p>
-    //                   </div>
-    //                   <div className="bg-secondary rounded-xl p-3 text-center">
-    //                     <p className="text-xs text-muted-foreground mb-1">Intermediate</p>
-    //                     <p className="font-serif text-lg font-bold text-primary">{pf.intermediate}</p>
-    //                   </div>
-    //                   <div className="bg-secondary rounded-xl p-3 text-center">
-    //                     <p className="text-xs text-muted-foreground mb-1">Advanced</p>
-    //                     <p className="font-serif text-lg font-bold text-primary">{pf.advanced}</p>
-    //                   </div>
-    //                 </div>
-    //               </div>
-    //             </AnimateOnScroll>
-    //           ))}
-    //         </div>
-    //         {!showAllFormats && (
-    //           <div className="text-center mt-8">
-    //             <button onClick={() => setShowAllFormats(true)} className="gradient-green text-primary-foreground px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 hover:opacity-90 transition-opacity">
-    //               View More Formats <ArrowRight className="w-4 h-4" />
-    //             </button>
-    //           </div>
-    //         )}
-    //         <p className="text-xs text-muted-foreground text-center mt-6">
-    //           * 3-Month programs available at discounted rates. See our <Link to="/Shadyuktha-Yog/pricing" className="text-primary font-semibold underline">Pricing page</Link> for details.
-    //         </p>
-    //       </div>
-    //     </AnimateOnScroll>
-    //   </div>
-    // </section>
     <>
       {/* THREE LEVELS SECTION */}
       <section className="py-24 bg-secondary/20">
@@ -420,16 +292,16 @@ const SadhanaLevelsSection = () => {
                       <span className="text-foreground/80">{item.outcome}</span>
                     </p>
                   </div>
-<div className="flex items-center justify-center sm:justify-between pt-4 border-t border-border">
-  <Link to="/Shadyuktha-Yog/contact">
-    <Button
-      className="rounded-full"
-      data-testid="button-explore-personal"
-    >
-      Enroll Now
-    </Button>
-  </Link>
-</div>
+                  <div className="flex items-center justify-center sm:justify-between pt-4 border-t border-border">
+                    <Link to="/contact">
+                      <Button
+                        className="rounded-full"
+                        data-testid="button-explore-personal"
+                      >
+                        Enroll Now
+                      </Button>
+                    </Link>
+                  </div>
                 </motion.div>
               </div>
             ))}
@@ -456,7 +328,10 @@ const SadhanaLevelsSection = () => {
               Each format is designed as a distinct learning environment —
               choose based on your lifestyle, depth, and level of commitment.
             </p>
+             <div className="decorative-line mx-auto mt-6" />{" "}
+
           </div>
+                   
 
           {/* PATHWAYS */}
           <div className="space-y-16">
@@ -467,7 +342,7 @@ const SadhanaLevelsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="relative overflow-hidden rounded-3xl shadow-xl border border-border bg-white"
+                className="relative overflow-hidden rounded-3xl shadow-xl border border-border"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-3">
                   {/* LEFT — ICON + TITLE */}
@@ -487,14 +362,12 @@ const SadhanaLevelsSection = () => {
                   </div>
 
                   {/* CENTER — IMAGE */}
-                  <div className="relative h-64  lg:h-auto">
-                    <img
-                      src={format.image}
-                      alt={format.title}
-                      className="absolute inset-0 w-full  h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
-                  </div>
+
+                  <TiltImage
+                    src={format.image}
+                    alt={format.title}
+                    className="h-64 lg:h-auto"
+                  />
 
                   {/* RIGHT — EXPANDABLE CONTENT */}
                   <div className="p-8 lg:p-10 flex flex-col justify-center">
@@ -546,7 +419,8 @@ const SadhanaLevelsSection = () => {
                     <div className="pt-6 mt-6 border-t border-border">
                       <Button
                         variant="ghost"
-                        size="sm" className="text-md"
+                        size="sm"
+                        className="text-md"
                         onClick={() =>
                           setExpandedFormat(expandedFormat === i ? null : i)
                         }
@@ -567,7 +441,7 @@ const SadhanaLevelsSection = () => {
 
           {/* CTA */}
           <div className="text-center mt-20">
-            <Link to="/Shadyuktha-Yog/allprograms">
+            <Link to="/allprograms">
               <Button size="lg" className="rounded-full px-12 py-6 text-lg">
                 View All Programs
                 <ArrowRight className="ml-3 h-5 w-5" />
@@ -606,7 +480,7 @@ const SadhanaLevelsSection = () => {
                   <Users className="h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-2xl font-bold text-foreground">
+                  <h3 className="font-serif text-3xl font-bold text-foreground">
                     Group Sessions
                   </h3>
                   <Badge className="bg-primary/10 text-primary mt-1">
@@ -641,7 +515,7 @@ const SadhanaLevelsSection = () => {
                 <span className="text-lg font-bold text-primary">
                   From ₹2,000/month
                 </span>
-                <Link to="/Shadyuktha-Yog/contact">
+                <Link to="/contact">
                   <Button
                     className="rounded-full"
                     data-testid="button-explore-personal"
@@ -663,7 +537,7 @@ const SadhanaLevelsSection = () => {
                   <Star className="h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-2xl font-bold text-foreground">
+                  <h3 className="font-serif text-3xl font-bold text-foreground">
                     One-on-One Sessions
                   </h3>
                   <Badge className="bg-accent/30 text-primary mt-1">
@@ -697,7 +571,7 @@ const SadhanaLevelsSection = () => {
                 <span className="text-lg font-bold text-primary">
                   From ₹8,000/month
                 </span>
-                <Link to="/Shadyuktha-Yog/contact">
+                <Link to="/contact">
                   <Button
                     className="rounded-full"
                     data-testid="button-explore-personal"

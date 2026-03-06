@@ -121,24 +121,23 @@ const AboutUs = () => {
           </div>
 
           {/* Centered content */}
-          <div className="max-w-6xl mx-auto px-4 relative z-10">
-            <div className="text-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-6xl font-serif text-white/30 mb-6">"</div>
-                <blockquote className="font-serif text-3xl md:text-4xl font-medium leading-relaxed mb-8">
-                  Yoga is the journey of the self, through the self, to the
-                  self.
-                </blockquote>
-                <cite className="text-white/70 text-lg">
-                  — The Bhagavad Gita
-                </cite>
-              </motion.div>
-            </div>
-          </div>
+         <div className="max-w-6xl mx-auto px-4 relative z-10">
+  <div className="text-center">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+    >
+      <div className="text-6xl font-serif text-white/30 mb-6">"</div>
+      <blockquote className="font-serif italic text-4xl md:text-5xl font-extralight leading-relaxed mb-8 text-white/90 tracking-wide">
+        Yoga is the journey of the self, through the self, to the self.
+      </blockquote>
+      <cite className="text-white/70 text-lg font-sans uppercase tracking-widest">
+        — The Bhagavad Gita
+      </cite>
+    </motion.div>
+  </div>
+</div>
         </section>
 
         <section className="py-24 bg-white relative lotus-pattern">
@@ -191,43 +190,60 @@ const AboutUs = () => {
           </div>
         </section>
         {/* CTA */}
-        <section className="py-16 bg-secondary/30">
-          <div className="w-full max-w-3xl mx-auto mb-20">
-            <img
-              src={shadyuktha}
-              alt="About Shadyuktha Yog"
-              className="rounded-2xl shadow-2xl w-full object-cover"
-            />
-          </div>
-          <div className="container mx-auto px-4 text-center">
-            <h3 className="font-serif text-3xl font-bold mb-4">
-              Begin Your Journey of Self-Discovery
-            </h3>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Whether you're a beginner or a seasoned practitioner, Shadyuktha
-              Yog welcomes you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/Shadyuktha-Yog/allprograms" className="w-full sm:w-64">
-                <Button
-                  size="lg"
-                  className="rounded-full px-10 py-5 text-lg w-full"
-                >
-                  Explore Programs
-                </Button>
-              </Link>
-              <Link to="/Shadyuktha-Yog/contact">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full px-10 py-5 text-lg w-full sm:w-64"
-                >
-                  Contact Us
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+         <section className="py-16 bg-secondary/30">
+      {/* Image with zoom & tilt */}
+      <motion.div
+        className="w-full max-w-3xl mx-auto mb-20 rounded-2xl overflow-hidden shadow-2xl"
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        whileHover={{ scale: 1.05, rotate: 1 }}
+      >
+        <img
+          src={shadyuktha}
+          alt="About Shadyuktha Yog"
+          className="w-full object-cover rounded-2xl"
+        />
+      </motion.div>
+
+      {/* Text Content */}
+      <motion.div
+        className="container mx-auto px-4 text-center"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <h3 className="font-serif text-3xl font-bold mb-4">
+          Begin Your Journey of Self-Discovery
+        </h3>
+        <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+          Whether you're a beginner or a seasoned practitioner, Shadyuktha
+          Yog welcomes you.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link to="/allprograms" className="w-full sm:w-64">
+            <Button
+              size="lg"
+              className="rounded-full px-10 py-5 text-lg w-full"
+            >
+              Explore Programs
+            </Button>
+          </Link>
+          <Link to="/contact">
+            <Button
+              size="lg"
+              variant="outline"
+              className="rounded-full px-10 py-5 text-lg w-full sm:w-64"
+            >
+              Contact Us
+            </Button>
+          </Link>
+        </div>
+      </motion.div>
+    </section>
       </div>
     </section>
   );

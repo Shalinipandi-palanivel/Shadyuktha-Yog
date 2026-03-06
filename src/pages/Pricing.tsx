@@ -259,14 +259,14 @@ const PriceTable = ({
     <table className="w-full">
       <thead>
         <tr className="gradient-green text-primary-foreground">
-          <th className="text-left py-4 px-6 text-sm font-bold">
+          <th className="text-left py-4 px-6 text-md font-bold">
             Program Type
           </th>
-          <th className="text-center py-4 px-4 text-sm font-bold">Beginner</th>
-          <th className="text-center py-4 px-4 text-sm font-bold">
+          <th className="text-center py-4 px-4 text-md font-bold">Beginner</th>
+          <th className="text-center py-4 px-4 text-md font-bold">
             Intermediate
           </th>
-          <th className="text-center py-4 px-4 text-sm font-bold">Advanced</th>
+          <th className="text-center py-4 px-4 text-md font-bold">Advanced</th>
         </tr>
       </thead>
       <tbody>
@@ -275,29 +275,29 @@ const PriceTable = ({
             key={r.format}
             className={i % 2 === 0 ? "bg-background" : "bg-secondary/50"}
           >
-            <td className="py-4 px-6 text-sm font-medium text-foreground">
+            <td className="py-4 px-6 text-md font-medium text-foreground">
               {r.format}
             </td>
-            <td className="py-4 px-4 text-center text-sm font-semibold text-primary">
+            <td className="py-4 px-4 text-center text-md font-semibold text-primary">
               {r.beginner}
               {showIntl && (
-                <span className="block text-xs text-muted-foreground">
+                <span className="block text-sm text-muted-foreground">
                   {showIntl[i]?.beginner}
                 </span>
               )}
             </td>
-            <td className="py-4 px-4 text-center text-sm font-semibold text-primary">
+            <td className="py-4 px-4 text-center text-md font-semibold text-primary">
               {r.intermediate}
               {showIntl && (
-                <span className="block text-xs text-muted-foreground">
+                <span className="block text-md text-muted-foreground">
                   {showIntl[i]?.intermediate}
                 </span>
               )}
             </td>
-            <td className="py-4 px-4 text-center text-sm font-semibold text-primary">
+            <td className="py-4 px-4 text-center text-md font-semibold text-primary">
               {r.advanced}
               {showIntl && (
-                <span className="block text-xs text-muted-foreground">
+                <span className="block text-sm text-muted-foreground">
                   {showIntl[i]?.advanced}
                 </span>
               )}
@@ -344,15 +344,16 @@ const Pricing = () => {
 
       {/* YCB Certifications */}
       <section className="section-padding bg-gradient-to-br from-background via-secondary/20 to-background">
-        <div className="container mx-auto max-w-5xl">
+        <div className="mx-auto max-w-8xl">
           <AnimateOnScroll>
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-2 text-center">
+            <h2 className="font-serif text-5xl font-bold text-foreground mb-2 text-center">
               YCB Teacher Training Certifications
             </h2>
-            <p className="text-muted-foreground text-center mb-8">
+            <p className="text-muted-foreground text-center mb-10">
               Government-Recognized Professional Excellence – Ministry of AYUSH
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="decorative-line mx-auto my-6" />{" "}
+            <div className="grid grid-cols-1  md:grid-cols-3 gap-6">
               {ycbCerts.map((c, i) => {
                 const cardColors = [
                   "bg-gradient-to-br from-green-200 via-green-100 to-green-50",
@@ -369,21 +370,22 @@ const Pricing = () => {
                     delay={i * 100}
                   >
                     <div
-                      className={`group block rounded-2xl border border-border p-6 hover-lift h-full ${bgColor} flex flex-col`}
+                      className={`group block mt-5 rounded-2xl border border-border p-6 hover-lift h-full ${bgColor} flex flex-col`}
                     >
                       {/* Header */}
                       <div className="flex items-center gap-2 mb-3">
                         <Star className="w-5 h-5 text-primary" />
-                        <span className="text-xs font-bold text-primary uppercase">
+                        <span className="text-sm font-bold text-primary uppercase">
                           {c.hours} Hours
                         </span>
                       </div>
-                      <h3 className="font-serif text-lg font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                      <h3 className="font-serif text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
                         {c.name}
                       </h3>
+                      <hr className="pb-6"/>
 
                       {/* Features */}
-                      <div className="space-y-2 text-sm mb-4">
+                      <div className="space-y-2 text-md mb-4">
                         {c.features.map((feature, idx) => (
                           <div key={idx} className="flex items-start gap-2">
                             <CheckCircle className="w-4 h-4 text-primary mt-0.5" />
@@ -393,7 +395,7 @@ const Pricing = () => {
                       </div>
 
                       {/* Fees & Duration */}
-                      <div className="space-y-2 text-sm mb-4">
+                      <div className="space-y-2 text-md mb-4">
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">
                             Tuition Fee
@@ -447,14 +449,15 @@ const Pricing = () => {
 
       {/* Core Sadhana */}
       <section className="section-padding bg-gradient-to-br from-secondary/40 via-background to-secondary/30">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-6xl">
           <AnimateOnScroll>
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-2 text-center">
-              A. Core Sadhana
+            <h2 className="font-serif text-5xl font-bold text-foreground mb-2 text-center">
+              Core Sadhana
             </h2>
             <p className="text-muted-foreground text-center mb-8">
               Level-Based Monthly Structure
             </p>
+              <div className="decorative-line mx-auto mt-6 mb-8" />{" "}
             <PriceTable
               title="Core Sadhana"
               data={coreSadhana}
@@ -468,12 +471,13 @@ const Pricing = () => {
       <section className="section-padding bg-gradient-to-br from-background via-secondary/20 to-background">
         <div className="container mx-auto max-w-5xl">
           <AnimateOnScroll>
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-2 text-center">
-              B. 3-Month Program
+            <h2 className="font-serif text-5xl font-bold text-foreground mb-2 text-center">
+           3-Month Program
             </h2>
             <p className="text-muted-foreground text-center mb-8">
               Commit deeper for sustainable transformation
             </p>
+              <div className="decorative-line mx-auto mt-6 mb-8" />{" "}
             <PriceTable title="3-Month" data={threeMonth} />
           </AnimateOnScroll>
         </div>
@@ -482,14 +486,16 @@ const Pricing = () => {
       {/* Specialized */}
       <section className="section-padding bg-gradient-to-br from-[#d9f0e1] via-[#ffffff] to-[#b7e5c7] relative overflow-hidden">
         {" "}
-        <div className="container mx-auto max-w-6xl">
+        <div className="mx-auto max-w-8xl">
           <AnimateOnScroll>
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-2 text-center">
-              C. Mastery & Specialized Series
+            <h2 className="font-serif text-5xl font-bold text-foreground mb-2 text-center">
+             Mastery & Specialized Series
             </h2>
-            <p className="text-muted-foreground text-center mb-12">
+            <p className="text-muted-foreground text-center mb-8">
               High-commitment tracks for specific yogic disciplines
             </p>
+
+              <div className="decorative-line mx-auto mt-5 mb-10" />{" "}
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {specialized.map((s, i) => (
@@ -506,7 +512,7 @@ const Pricing = () => {
                     </span>
                   )} */}
 
-                  <h3 className="font-serif text-xl  font-bold mb-2">
+                  <h3 className="font-serif text-2xl  font-bold mb-2">
                     {s.name}
                   </h3>
                   <p className="text-sm  mb-6">International: {s.intlFee}</p>
@@ -549,13 +555,14 @@ const Pricing = () => {
       <section className="section-padding bg-gradient-to-br from-secondary/40 via-background to-secondary/30">
         <div className="container mx-auto max-w-5xl">
           <AnimateOnScroll>
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-2 text-center">
-              D. Therapeutic Excellence (DPYT Model)
+            <h2 className="font-serif text-5xl font-bold text-foreground mb-2 text-center">
+             Therapeutic Excellence (DPYT Model)
             </h2>
             <p className="text-muted-foreground text-center mb-8">
               Morning Management (Self-Practice) & Class Management
               (Therapist-led)
             </p>
+              <div className="decorative-line mx-auto mt-6 mb-10" />{" "}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {therapeutic.map((t) => (
                 <div
@@ -565,7 +572,7 @@ const Pricing = () => {
                   <div className="w-16 h-16 rounded-full gradient-green mx-auto mb-4 flex items-center justify-center">
                     <t.icon className="w-8 h-8 text-primary-foreground" />
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-foreground mb-2">
+                  <h3 className="font-serif text-3xl font-bold text-foreground mb-2">
                     {t.type}
                   </h3>
                   <p className="text-sm text-muted-foreground mb-4">
@@ -586,18 +593,19 @@ const Pricing = () => {
 
       {/*Mind-Body and Inner Clarity*/}
    <section className="section-padding bg-gradient-to-br from-[#dff7e6] via-[#f0fcf2] to-[#c6f0d4] relative overflow-hidden">
-  <div className="container mx-auto max-w-5xl">
+  <div className="mx-auto max-w-5xl">
     <AnimateOnScroll>
-      <h2 className="font-serif text-3xl font-bold text-foreground mb-2 text-center">
+      <h2 className="font-serif text-5xl font-bold text-foreground mb-2 text-center">
         Mind–Body & Inner Clarity Program
       </h2>
       <p className="text-muted-foreground text-center mb-8">
         Mind relaxation techniques, guided meditations & emotional
         regulation practices
       </p>
+        <div className="decorative-line mx-auto my-6" />{" "}
 
       {/* Individual Sessions */}
-      <h3 className="font-serif text-2xl font-semibold text-foreground mb-4 text-center">
+      <h3 className="font-serif text-3xl font-semibold text-foreground mb-8 text-center">
         Individual Sessions
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -609,12 +617,12 @@ const Pricing = () => {
             <div className="w-16 h-16 rounded-full gradient-green mx-auto mb-4 flex items-center justify-center">
               <session.icon className="w-8 h-8 text-primary-foreground" />
             </div>
-            <h3 className="font-serif text-xl font-bold text-foreground mb-2">
+            <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
               {session.type}
             </h3>
-            <p className="text-sm text-muted-foreground mb-2">{session.group}</p>
+            <p className="text-md text-muted-foreground mb-2">{session.group}</p>
             <p className="font-serif text-3xl font-bold text-primary">{session.fee}</p>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-md text-muted-foreground mt-1">
               International: {session.intlFee}
             </p>
             <p className="text-sm text-muted-foreground mt-2">
@@ -626,7 +634,7 @@ const Pricing = () => {
       </div>
 
       {/* Group Sessions */}
-      <h3 className="font-serif text-2xl font-semibold text-foreground mb-4 text-center">
+      <h3 className="font-serif text-3xl font-semibold text-foreground mb-8 text-center">
         Group Sessions
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -638,12 +646,12 @@ const Pricing = () => {
             <div className="w-16 h-16 rounded-full gradient-green mx-auto mb-4 flex items-center justify-center">
               <session.icon className="w-8 h-8 text-primary-foreground" />
             </div>
-            <h3 className="font-serif text-xl font-bold text-foreground mb-2">
+            <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
               {session.type}
             </h3>
-            <p className="text-sm text-muted-foreground mb-2">{session.group}</p>
+            <p className="text-md text-muted-foreground mb-2">{session.group}</p>
             <p className="font-serif text-3xl font-bold text-primary">{session.fee}</p>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-md text-muted-foreground mt-1">
               International: {session.intlFee}
             </p>
             <p className="text-sm text-muted-foreground mt-2">
@@ -695,7 +703,7 @@ const Pricing = () => {
               ))}
             </div>
             <Link
-              to="/Shadyuktha-Yog/#contact"
+              to="/#contact"
               className="inline-block mt-8 bg-background text-primary px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity"
             >
               Enroll Now

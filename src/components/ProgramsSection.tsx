@@ -23,14 +23,14 @@ const programs = [
   },
   {
     title: "YCB Level 2 – Yoga Wellness Instructor",
-    desc: "Science of wellness. Intermediate-level structured program.",
+    desc: "Science of wellness. Intermediate-level structured professionals program.",
     fee: "₹12,999",
     image: level2,
     path: "/programs/ycb-level-2",
   },
   {
     title: "YCB Level 3 – Yoga Teacher & Evaluator",
-    desc: "Mastery of pedagogy. Advanced professional certification.",
+    desc: "Mastery of pedagogy. Advanced structured professionals programn.",
     fee: "₹14,999",
     image: level3,
     path: "/programs/ycb-level-3",
@@ -71,7 +71,7 @@ const programs = [
     path: "/programs/prenatal",
   },
   {
-    title: "Mind-Body And Inner Clarity Program",
+    title: "Mind-Body & Inner Clarity Program",
     desc: "Focus on mind relaxation and emotional alignment using guided techniques for clarity and inner peace.",
     fee: "Contact Us",
     image: mindbody,
@@ -82,7 +82,7 @@ const programs = [
 const ProgramsSection = () => {
   return (
     <section id="programs" className="section-padding gradient-green-light">
-      <div className="container mx-auto">
+      <div className=" mx-auto">
         <AnimateOnScroll className="text-center mb-14">
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-2">
             Our Programs
@@ -98,14 +98,14 @@ const ProgramsSection = () => {
           <div className="decorative-line mx-auto mt-6" />
         </AnimateOnScroll>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
   {programs.map((prog, i) => (
     <AnimateOnScroll
       key={prog.path}
       animation="animate-fade-drift"
       delay={i * 100}
     >
-      <div className="group bg-card rounded-2xl overflow-hidden shadow-md hover-lift border border-border flex flex-col h-full">
+      <div className="group  rounded-full overflow-hidden  hover-lift flex flex-col h-full">
         
         {/* Image */}
         <div className="aspect-[4/3] sm:aspect-[16/9] overflow-hidden">
@@ -119,16 +119,16 @@ const ProgramsSection = () => {
         {/* Content */}
         <div className="p-5 flex flex-col flex-grow">
           <div className="mb-4">
-            <h3 className="font-serif text-lg sm:text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+            <h3 className="font-serif flex justify-center text-center text-lg sm:text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
               {prog.title}
             </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+            <p className="text-sm flex justify-center text-center text-muted-foreground leading-relaxed line-clamp-3">
               {prog.desc}
             </p>
           </div>
 
           {/* Button pinned to bottom */}
-          <div className="mt-auto flex justify-center">
+          <div className="mt-auto flex justify-center sm-justify-center">
             <Link
               to={prog.path}
               className="px-5 py-2 bg-primary text-white text-sm font-semibold rounded-full hover:opacity-90 transition-opacity"

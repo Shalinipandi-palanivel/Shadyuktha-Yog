@@ -443,7 +443,7 @@ const WellnessProgram = () => {
                                 <ChevronDown className="ml-1 h-4 w-4" />
                               )}
                             </Button>
-                            <Link to="/Shadyuktha-Yog/contact">
+                            <Link to="/contact">
                               <Button
                                 className="rounded-full"
                                 data-testid={`button-inquire-${program.id}`}
@@ -477,7 +477,7 @@ const WellnessProgram = () => {
                 resilience. Focus on Vinyasa, Tristhana, and the Primary
                 sequence.
               </p>
-              <Link to="/Shadyuktha-Yog/programs/ashtanga">
+              <Link to="/programs/ashtanga">
                 <a className="inline-flex items-center gap-2 font-bold text-primary hover:gap-3 transition-all">
                   Explore Ashtanga <ArrowRight className="w-4 h-4" />
                 </a>
@@ -517,7 +517,7 @@ const WellnessProgram = () => {
                 for chronic conditions, hormonal balance, and postural
                 correction.
               </p>
-              <Link to="/Shadyuktha-Yog/programs/therapeutic">
+              <Link to="/programs/therapeutic">
                 <a className="inline-flex items-center gap-2 font-bold text-accent hover:gap-3 transition-all">
                   Clinical Recovery <ArrowRight className="w-4 h-4" />
                 </a>
@@ -556,7 +556,7 @@ const WellnessProgram = () => {
                 Empowering motherhood through conscious movement and breathwork.
                 Safe practices for all trimesters and fourth-trimester recovery.
               </p>
-              <Link to="/Shadyuktha-Yog/programs/prenatal">
+              <Link to="/programs/prenatal">
                 <a className="inline-flex items-center gap-2 font-bold text-primary hover:gap-3 transition-all">
                   View Maternity Care <ArrowRight className="w-4 h-4" />
                 </a>
@@ -608,7 +608,7 @@ const WellnessProgram = () => {
                 improve focus, flexibility, emotional balance, and overall
                 well-being in children.
               </p>
-              <Link to="/Shadyuktha-Yog/programs/kids-yoga">
+              <Link to="/programs/kids-yoga">
                 <span className="inline-flex items-center gap-2 font-bold text-accent hover:gap-3 transition-all cursor-pointer">
                   Explore Kids Program <ArrowRight className="w-4 h-4" />
                 </span>
@@ -640,7 +640,7 @@ const WellnessProgram = () => {
                 capacity, calm the nervous system, and deepen mind–body
                 awareness.
               </p>
-              <Link to="/Shadyuktha-Yog/programs/pranayama">
+              <Link to="/programs/pranayama">
                 <span className="inline-flex items-center gap-2 font-bold text-accent hover:gap-3 transition-all cursor-pointer">
                   Breath & Balance <ArrowRight className="w-4 h-4" />
                 </span>
@@ -671,7 +671,7 @@ const WellnessProgram = () => {
                 A gentle introduction to yogic practices focusing on posture
                 alignment, breathing awareness, and foundational techniques.
               </p>
-              <Link to="/Shadyuktha-Yog/programs/beginner">
+              <Link to="/programs/beginner">
                 <span className="inline-flex items-center gap-2 font-bold text-accent hover:gap-3 transition-all cursor-pointer">
                   Start Your Journey <ArrowRight className="w-4 h-4" />
                 </span>
@@ -702,7 +702,7 @@ const WellnessProgram = () => {
                 Strengthen and refine your practice with deeper asanas, breath
                 coordination, and enhanced body awareness.
               </p>
-              <Link to="/Shadyuktha-Yog/programs/intermediate">
+              <Link to="/programs/intermediate">
                 <span className="inline-flex items-center gap-2 font-bold text-accent hover:gap-3 transition-all cursor-pointer">
                   Deepen Practice <ArrowRight className="w-4 h-4" />
                 </span>
@@ -733,7 +733,7 @@ const WellnessProgram = () => {
                 An intensive practice for experienced practitioners focusing on
                 advanced asanas, breath mastery, and deeper meditative states.
               </p>
-              <Link to="/Shadyuktha-Yog/programs/advanced">
+              <Link to="/programs/advanced">
                 <span className="inline-flex items-center gap-2 font-bold text-accent hover:gap-3 transition-all cursor-pointer">
                   Master the Practice <ArrowRight className="w-4 h-4" />
                 </span>

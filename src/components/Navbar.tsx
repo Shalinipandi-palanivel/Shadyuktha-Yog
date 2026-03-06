@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/shadyuktha_logo.jpg";
+import { motion } from "framer-motion";
+
+interface NavbarProps {
+  selectedPost?: any;
+}
 
 const programs = [
   {
@@ -27,7 +32,7 @@ const programs = [
   { name: "Advanced Level", path: "/programs/advanced-yoga" },
 ];
 
-const Navbar = () => {
+const Navbar: React.FC<NavbarProps> = ({ selectedPost }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -43,10 +48,17 @@ const Navbar = () => {
     setIsOpen(false);
     setProgramsOpen(false);
   }, [location]);
-
+  if (selectedPost) return null;
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md shadow-md" : "bg-background/80 backdrop-blur-sm"}`}
+    <motion.nav
+      initial={{ y: 0 }}
+      animate={{ y: selectedPost ? -120 : 0 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-background/95 shadow-md"
+          : "bg-background/0 backdrop-blur-sm"
+      }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
@@ -70,13 +82,13 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-8">
             <Link
               to="/"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-md font-bold font-medium text-foreground hover:text-primary transition-colors"
             >
               Home
             </Link>
             <Link
               to="/aboutus"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-md font-bold font-medium text-foreground hover:text-primary transition-colors"
             >
               About Us
             </Link>
@@ -84,7 +96,7 @@ const Navbar = () => {
             {/* Programs dropdown */}
             <div className="relative group">
               <button
-                className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                className="flex items-center gap-1 text-md font-bold font-medium text-foreground hover:text-primary transition-colors"
                 onMouseEnter={() => setProgramsOpen(true)}
                 onMouseLeave={() => setProgramsOpen(false)}
               >
@@ -99,7 +111,7 @@ const Navbar = () => {
                   <Link
                     key={p.path}
                     to={p.path}
-                    className="block px-4 py-2.5 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                    className="block px-4 py-2.5 sm-text-md text-sm sm-font-bold text-foreground hover:bg-secondary hover:text-primary transition-colors"
                   >
                     {p.name}
                   </Link>
@@ -109,52 +121,54 @@ const Navbar = () => {
 
             <Link
               to="/pricing"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-md font-bold font-medium text-foreground hover:text-primary transition-colors"
             >
               Pricing
             </Link>
             <Link
               to="/workshops"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-md font-bold font-medium text-foreground hover:text-primary transition-colors"
             >
               Workshops
             </Link>
             <Link
               to="/teachers"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-md font-bold font-medium text-foreground hover:text-primary transition-colors"
             >
               Teachers
             </Link>
             <Link
               to="/brochure"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-md font-bold font-medium text-foreground hover:text-primary transition-colors"
             >
               Brochure
             </Link>
             <Link
               to="/blogs"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-md font-bold font-medium text-foreground hover:text-primary transition-colors"
             >
               Blogs
             </Link>
             <Link
               to="/testimonials"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-md font-bold font-medium text-foreground hover:text-primary transition-colors"
             >
               Testimonials
             </Link>
-            <Link
+            {/* <Link
               to="/contact"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-md font-bold font-medium text-foreground hover:text-primary transition-colors"
             >
               Contact
-            </Link>
-            <Link
-              to="/contact"
-              className="gradient-green text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+            </Link> */}
+            <a
+              href="https://wa.me/917200448918?text=Hi%20Shadyuktha%20Yog,%20I%20would%20like%20to%20book%20a%20session!"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="gradient-green text-primary-foreground px-5 py-2.5 rounded-full text-md font-bold font-semibold hover:opacity-40 transition-opacity"
             >
-              Enroll Now
-            </Link>
+              Book Now
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -165,23 +179,23 @@ const Navbar = () => {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="lg:hidden pb-6 animate-fade-in">
-            <div className="flex flex-col gap-1">
+          <div className="lg:hidden pb-6 bg-shadow animate-fade-in backdrop-blur-md">
+            <div className="flex flex-col  gap-1">
               <Link
                 to="/"
-                className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
+                className="px-4 py-3 text-md font-bold  hover:bg-secondary rounded-lg"
               >
                 Home
               </Link>
               <Link
                 to="/aboutus"
-                className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
+                className="px-4 py-3 text-md font-bold  hover:bg-secondary rounded-lg"
               >
                 About
               </Link>
               <button
                 onClick={() => setProgramsOpen(!programsOpen)}
-                className="flex items-center justify-between px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg w-full text-left"
+                className="flex items-center justify-between px-4 py-3 text-md font-bold  hover:bg-secondary rounded-lg w-full text-left"
               >
                 Programs{" "}
                 <ChevronDown
@@ -194,7 +208,7 @@ const Navbar = () => {
                     <Link
                       key={p.path}
                       to={p.path}
-                      className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary"
+                      className="block px-4 py-2 text-md font-bold text-foreground hover:text-primary"
                     >
                       {p.name}
                     </Link>
@@ -203,49 +217,49 @@ const Navbar = () => {
               )}
               <Link
                 to="/pricing"
-                className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
+                className="px-4 py-3 text-md font-bold  hover:bg-secondary rounded-lg"
               >
                 Pricing
               </Link>
               <Link
                 to="/workshops"
-                className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
+                className="px-4 py-3 text-md font-bold  hover:bg-secondary rounded-lg"
               >
                 Workshops
               </Link>
               <Link
                 to="/teachers"
-                className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
+                className="px-4 py-3 text-md font-bold  hover:bg-secondary rounded-lg"
               >
                 Teachers
               </Link>
               <Link
                 to="/brochure"
-                className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
+                className="px-4 py-3 text-md font-bold  hover:bg-secondary rounded-lg"
               >
                 Brochure
               </Link>
               <Link
                 to="/blogs"
-                className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
+                className="px-4 py-3 text-md font-bold  hover:bg-secondary rounded-lg"
               >
                 Blogs
               </Link>
               <Link
                 to="/testimonials"
-                className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
+                className="px-4 py-3 text-md font-bold  hover:bg-secondary rounded-lg"
               >
                 Testimonials
               </Link>
               <Link
                 to="/contact"
-                className="px-4 py-3 text-sm font-medium hover:bg-secondary rounded-lg"
+                className="px-4 py-3 text-md font-bold  hover:bg-secondary rounded-lg"
               >
                 Contact
               </Link>
               <Link
                 to="/contact"
-                className="mx-4 mt-2 gradient-green text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold text-center"
+                className="mx-4 mt-2 gradient-green text-primary-foreground px-5 py-2.5 rounded-full text-md font-bold font-semibold text-center"
               >
                 Enroll Now
               </Link>
@@ -253,7 +267,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

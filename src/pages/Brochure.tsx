@@ -139,7 +139,7 @@ const Brochure = () => {
                   ))}
                 </div>
                 <Link
-                  to="/Shadyuktha-Yog/#contact"
+                  to="/#contact"
                   className="inline-flex items-center gap-2 gradient-green text-primary-foreground px-6 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity"
                 >
                   <Download className="w-4 h-4" /> Download Brochure
@@ -268,7 +268,7 @@ const Brochure = () => {
             a consultation about any program.
           </p>
           <Link
-            to="/Shadyuktha-Yog/contact"
+            to="/contact"
             className="inline-block bg-background text-primary px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity"
           >
             Contact Us

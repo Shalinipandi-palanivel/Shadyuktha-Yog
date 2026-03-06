@@ -82,6 +82,7 @@ interface ProgramBase {
   frequency: string;
   timing: string[];
   description: string;
+  // learningOutcomes: string;
   highlights: {
     title: string;
     description: string;
@@ -1397,7 +1398,7 @@ const programData: Record<
           title: "Phase 2: Class Management (Guided Intervention)",
           items: [
             "Targeted Asana Sequences: Anatomically designed postures for your specific condition",
-            "Precision & Prop Integration: chairs, Belts, Bricks for therapeutic benefit without injury risk",
+            "Precision & Prop Integration: chairs, Belts, Blocks for therapeutic benefit without injury risk",
             "Bio-Feedback & Breath: Deep synchronization for cellular repair",
             "Sāvasana & Restoration: Specialized relaxation to lower systemic inflammation",
           ],
@@ -3493,7 +3494,7 @@ const YogaProgramLayout = ({
               </AnimateOnScroll>
 
               {/* Learning Outcomes */}
-              <AnimateOnScroll>
+              {/* <AnimateOnScroll>
                 <h2 className="font-serif text-2xl font-bold text-foreground mb-4">
                   Learning Outcomes
                 </h2>
@@ -3505,7 +3506,7 @@ const YogaProgramLayout = ({
                     </div>
                   ))}
                 </div>
-              </AnimateOnScroll>
+              </AnimateOnScroll> */}
 
               <AnimateOnScroll>
                 <h2 className="font-serif text-2xl font-bold text-foreground mb-4">
@@ -3513,7 +3514,10 @@ const YogaProgramLayout = ({
                 </h2>
 
                 <div className="space-y-3">
-                  {program.whoShouldAttend.map((person, i) => (
+                  {(Array.isArray(program.whoShouldAttend)
+                    ? program.whoShouldAttend
+                    : []
+                  ).map((person, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <CheckCircle className="w-5 h-5 text-primary shrink-0" />
                       <span className="text-sm">{person}</span>
@@ -3595,20 +3599,36 @@ const TherapeuticLayout = ({
     conditions: { icon: string; label: string; items: string[] }[];
     sessionTypes: { type: string; ideal: string; fee: string }[];
   };
-   const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     personalDetails: { fullName: "", age: "", occupation: "", primaryGoal: "" },
     medicalHistory: { womensHealth: [], spine: [], metabolic: [], mental: [] },
-    lifestyle: { painLevel: "", sleepQuality: "", energyLevels: "", stressLevels: "" },
+    lifestyle: {
+      painLevel: "",
+      sleepQuality: "",
+      energyLevels: "",
+      stressLevels: "",
+    },
     precautions: "",
     bodyAwareness: "",
-    consent: { yogaUnderstanding: false, healthUpdates: false, committedDays: "" },
+    consent: {
+      yogaUnderstanding: false,
+      healthUpdates: false,
+      committedDays: "",
+    },
   });
 
   // Handle checkbox arrays
-  const handleCheckboxGroup = (section: string, field: string, value: string, checked: boolean) => {
+  const handleCheckboxGroup = (
+    section: string,
+    field: string,
+    value: string,
+    checked: boolean,
+  ) => {
     setFormData((prev) => {
       const arr = prev[section][field];
-      const updated = checked ? [...arr, value] : arr.filter((v: string) => v !== value);
+      const updated = checked
+        ? [...arr, value]
+        : arr.filter((v: string) => v !== value);
       return { ...prev, [section]: { ...prev[section], [field]: updated } };
     });
   };
@@ -3633,16 +3653,38 @@ const TherapeuticLayout = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://ascogonial-corene-undecomposed.ngrok-free.dev/api/therapy", formData);
+      const res = await axios.post(
+        "https://ascogonial-corene-undecomposed.ngrok-free.dev/api/therapy",
+        formData,
+      );
       alert("Therapy intake submitted successfully!");
       // Reset form if needed
       setFormData({
-        personalDetails: { fullName: "", age: "", occupation: "", primaryGoal: "" },
-        medicalHistory: { womensHealth: [], spine: [], metabolic: [], mental: [] },
-        lifestyle: { painLevel: "", sleepQuality: "", energyLevels: "", stressLevels: "" },
+        personalDetails: {
+          fullName: "",
+          age: "",
+          occupation: "",
+          primaryGoal: "",
+        },
+        medicalHistory: {
+          womensHealth: [],
+          spine: [],
+          metabolic: [],
+          mental: [],
+        },
+        lifestyle: {
+          painLevel: "",
+          sleepQuality: "",
+          energyLevels: "",
+          stressLevels: "",
+        },
         precautions: "",
         bodyAwareness: "",
-        consent: { yogaUnderstanding: false, healthUpdates: false, committedDays: "" },
+        consent: {
+          yogaUnderstanding: false,
+          healthUpdates: false,
+          committedDays: "",
+        },
       });
     } catch (err) {
       console.error(err);
@@ -3865,191 +3907,311 @@ const TherapeuticLayout = ({
               <Sidebar program={program} slug={slug} />
             </div>
           </div>
-        <section id="therapy-intake-form" className="bg-secondary/20">
-  <div className="mx-auto max-w-4xl">
-    {/* Heading */}
-    <div className="text-center mb-12">
-      <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-3">
-        Therapeutic Yoga Intake Form
-      </h2>
-      <p className="text-muted-foreground max-w-2xl mx-auto">
-        Shadyuktha Yog: Path to Holistic Recovery <br />
-        <span className="text-sm italic">
-          This information is strictly confidential and used only to design your personalized therapeutic sequence.
-        </span>
-      </p>
-    </div>
+          <section id="therapy-intake-form" className="bg-secondary/20">
+            <div className="mx-auto max-w-4xl">
+              {/* Heading */}
+              <div className="text-center mb-12">
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-3">
+                  Therapeutic Yoga Intake Form
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Shadyuktha Yog: Path to Holistic Recovery <br />
+                  <span className="text-sm italic">
+                    This information is strictly confidential and used only to
+                    design your personalized therapeutic sequence.
+                  </span>
+                </p>
+              </div>
 
-    {/* Form */}
-    <form
-      onSubmit={handleSubmit}
-      className="w-full max-w-6xl mx-auto space-y-12 bg-background/60 backdrop-blur-xl border border-border rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-xl"
-    >
-      {/* 1. Personal Details */}
-      <section className="space-y-6">
-        <h3 className="text-lg md:text-xl font-semibold">1. Personal Details</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-          <input
-            className="input w-full"
-            placeholder="Full Name"
-            value={formData.personalDetails.fullName}
-            onChange={(e) => handleChange("personalDetails", "fullName", e.target.value)}
-            required
-          />
-          <input
-            className="input w-full"
-            placeholder="Age"
-            value={formData.personalDetails.age}
-            onChange={(e) => handleChange("personalDetails", "age", e.target.value)}
-          />
-          <input
-            className="input w-full"
-            placeholder="Occupation"
-            value={formData.personalDetails.occupation}
-            onChange={(e) => handleChange("personalDetails", "occupation", e.target.value)}
-          />
-          <input
-            className="input w-full"
-            placeholder="Primary Goal for Therapy"
-            value={formData.personalDetails.primaryGoal}
-            onChange={(e) => handleChange("personalDetails", "primaryGoal", e.target.value)}
-          />
-        </div>
-      </section>
+              {/* Form */}
+              <form
+                onSubmit={handleSubmit}
+                className="w-full max-w-6xl mx-auto space-y-12 bg-background/60 backdrop-blur-xl border border-border rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-xl"
+              >
+                {/* 1. Personal Details */}
+                <section className="space-y-6">
+                  <h3 className="text-lg md:text-xl font-semibold">
+                    1. Personal Details
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <input
+                      className="input w-full"
+                      placeholder="Full Name"
+                      value={formData.personalDetails.fullName}
+                      onChange={(e) =>
+                        handleChange(
+                          "personalDetails",
+                          "fullName",
+                          e.target.value,
+                        )
+                      }
+                      required
+                    />
+                    <input
+                      className="input w-full"
+                      placeholder="Age"
+                      value={formData.personalDetails.age}
+                      onChange={(e) =>
+                        handleChange("personalDetails", "age", e.target.value)
+                      }
+                    />
+                    <input
+                      className="input w-full"
+                      placeholder="Occupation"
+                      value={formData.personalDetails.occupation}
+                      onChange={(e) =>
+                        handleChange(
+                          "personalDetails",
+                          "occupation",
+                          e.target.value,
+                        )
+                      }
+                    />
+                    <input
+                      className="input w-full"
+                      placeholder="Primary Goal for Therapy"
+                      value={formData.personalDetails.primaryGoal}
+                      onChange={(e) =>
+                        handleChange(
+                          "personalDetails",
+                          "primaryGoal",
+                          e.target.value,
+                        )
+                      }
+                    />
+                  </div>
+                </section>
 
-      {/* 2. Medical History */}
-      <section className="space-y-8">
-        <h3 className="text-lg md:text-xl font-semibold">2. Medical History & Categorization</h3>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {[
-            { title: "Women’s Health & Hormones", field: "womensHealth", items: ["PCOD / PCOS","Thyroid Dysfunction","Infertility Support","Menstrual Irregularities"] },
-            { title: "Spine & Musculoskeletal", field: "spine", items: ["Lower Back Pain / Sciatica","Cervical Spondylosis","Slip Disc","Arthritis / Joint Pain"] },
-            { title: "Metabolic & Digestive", field: "metabolic", items: ["Diabetes (Type 1 / Type 2)","Hypertension","IBS / Chronic Constipation","Weight Management Concerns"] },
-            { title: "Mental & Neurological", field: "mental", items: ["Anxiety / Panic Attacks","Chronic Insomnia","Depression","Migraines / Headaches"] },
-          ].map((group) => (
-            <fieldset key={group.title} className="space-y-3">
-              <legend className="font-semibold mb-2">{group.title}</legend>
-              {group.items.map((item) => (
-                <label key={item} className="flex items-start gap-3 text-sm leading-relaxed">
-                  <input
-                    type="checkbox"
-                    className="checkbox mt-1 shrink-0"
-                    checked={formData.medicalHistory[group.field].includes(item)}
-                    onChange={(e) => handleCheckboxGroup("medicalHistory", group.field, item, e.target.checked)}
+                {/* 2. Medical History */}
+                <section className="space-y-8">
+                  <h3 className="text-lg md:text-xl font-semibold">
+                    2. Medical History & Categorization
+                  </h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {[
+                      {
+                        title: "Women’s Health & Hormones",
+                        field: "womensHealth",
+                        items: [
+                          "PCOD / PCOS",
+                          "Thyroid Dysfunction",
+                          "Infertility Support",
+                          "Menstrual Irregularities",
+                        ],
+                      },
+                      {
+                        title: "Spine & Musculoskeletal",
+                        field: "spine",
+                        items: [
+                          "Lower Back Pain / Sciatica",
+                          "Cervical Spondylosis",
+                          "Slip Disc",
+                          "Arthritis / Joint Pain",
+                        ],
+                      },
+                      {
+                        title: "Metabolic & Digestive",
+                        field: "metabolic",
+                        items: [
+                          "Diabetes (Type 1 / Type 2)",
+                          "Hypertension",
+                          "IBS / Chronic Constipation",
+                          "Weight Management Concerns",
+                        ],
+                      },
+                      {
+                        title: "Mental & Neurological",
+                        field: "mental",
+                        items: [
+                          "Anxiety / Panic Attacks",
+                          "Chronic Insomnia",
+                          "Depression",
+                          "Migraines / Headaches",
+                        ],
+                      },
+                    ].map((group) => (
+                      <fieldset key={group.title} className="space-y-3">
+                        <legend className="font-semibold mb-2">
+                          {group.title}
+                        </legend>
+                        {group.items.map((item) => (
+                          <label
+                            key={item}
+                            className="flex items-start gap-3 text-sm leading-relaxed"
+                          >
+                            <input
+                              type="checkbox"
+                              className="checkbox mt-1 shrink-0"
+                              checked={formData.medicalHistory[
+                                group.field
+                              ].includes(item)}
+                              onChange={(e) =>
+                                handleCheckboxGroup(
+                                  "medicalHistory",
+                                  group.field,
+                                  item,
+                                  e.target.checked,
+                                )
+                              }
+                            />
+                            <span>{item}</span>
+                          </label>
+                        ))}
+                      </fieldset>
+                    ))}
+                  </div>
+                </section>
+
+                {/* 3. Lifestyle & Vitality */}
+                <section className="space-y-6">
+                  <h3 className="text-lg md:text-xl font-semibold">
+                    3. Lifestyle & Vitality Assessment
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <input
+                      className="input w-full"
+                      placeholder="Current Pain Level (1–10)"
+                      value={formData.lifestyle.painLevel}
+                      onChange={(e) =>
+                        handleChange("lifestyle", "painLevel", e.target.value)
+                      }
+                    />
+                    <select
+                      className="input w-full"
+                      value={formData.lifestyle.sleepQuality}
+                      onChange={(e) =>
+                        handleChange(
+                          "lifestyle",
+                          "sleepQuality",
+                          e.target.value,
+                        )
+                      }
+                    >
+                      <option value="">Sleep Quality</option>
+                      <option value="Poor">Poor</option>
+                      <option value="Average">Average</option>
+                      <option value="Good">Good</option>
+                    </select>
+                    <select
+                      className="input w-full"
+                      value={formData.lifestyle.energyLevels}
+                      onChange={(e) =>
+                        handleChange(
+                          "lifestyle",
+                          "energyLevels",
+                          e.target.value,
+                        )
+                      }
+                    >
+                      <option value="">Energy Levels</option>
+                      <option value="Low all day">Low all day</option>
+                      <option value="Afternoon dips">Afternoon dips</option>
+                      <option value="High">High</option>
+                    </select>
+                    <select
+                      className="input w-full"
+                      value={formData.lifestyle.stressLevels}
+                      onChange={(e) =>
+                        handleChange(
+                          "lifestyle",
+                          "stressLevels",
+                          e.target.value,
+                        )
+                      }
+                    >
+                      <option value="">Stress Levels</option>
+                      <option value="Manageable">Manageable</option>
+                      <option value="High">High</option>
+                      <option value="Overwhelming">Overwhelming</option>
+                    </select>
+                  </div>
+                </section>
+
+                {/* 4. Precautions */}
+                <section className="space-y-4">
+                  <h3 className="text-lg md:text-xl font-semibold">
+                    4. Physical Limitations & Precautions
+                  </h3>
+                  <textarea
+                    className="input w-full min-h-[120px] resize-y"
+                    placeholder="Medications, recent surgeries, or supports used (if any)"
+                    value={formData.precautions}
+                    onChange={(e) =>
+                      setFormData({ ...formData, precautions: e.target.value })
+                    }
                   />
-                  <span>{item}</span>
-                </label>
-              ))}
-            </fieldset>
-          ))}
-        </div>
-      </section>
+                </section>
 
-      {/* 3. Lifestyle & Vitality */}
-      <section className="space-y-6">
-        <h3 className="text-lg md:text-xl font-semibold">3. Lifestyle & Vitality Assessment</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-          <input
-            className="input w-full"
-            placeholder="Current Pain Level (1–10)"
-            value={formData.lifestyle.painLevel}
-            onChange={(e) => handleChange("lifestyle", "painLevel", e.target.value)}
-          />
-          <select
-            className="input w-full"
-            value={formData.lifestyle.sleepQuality}
-            onChange={(e) => handleChange("lifestyle", "sleepQuality", e.target.value)}
-          >
-            <option value="">Sleep Quality</option>
-            <option value="Poor">Poor</option>
-            <option value="Average">Average</option>
-            <option value="Good">Good</option>
-          </select>
-          <select
-            className="input w-full"
-            value={formData.lifestyle.energyLevels}
-            onChange={(e) => handleChange("lifestyle", "energyLevels", e.target.value)}
-          >
-            <option value="">Energy Levels</option>
-            <option value="Low all day">Low all day</option>
-            <option value="Afternoon dips">Afternoon dips</option>
-            <option value="High">High</option>
-          </select>
-          <select
-            className="input w-full"
-            value={formData.lifestyle.stressLevels}
-            onChange={(e) => handleChange("lifestyle", "stressLevels", e.target.value)}
-          >
-            <option value="">Stress Levels</option>
-            <option value="Manageable">Manageable</option>
-            <option value="High">High</option>
-            <option value="Overwhelming">Overwhelming</option>
-          </select>
-        </div>
-      </section>
+                {/* 5. Body Awareness */}
+                <section className="space-y-4">
+                  <h3 className="text-lg md:text-xl font-semibold">
+                    5. Body Awareness Chart
+                  </h3>
+                  <textarea
+                    className="input w-full min-h-[140px] resize-y"
+                    placeholder="Describe location, type, and trigger of discomfort"
+                    value={formData.bodyAwareness}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        bodyAwareness: e.target.value,
+                      })
+                    }
+                  />
+                </section>
 
-      {/* 4. Precautions */}
-      <section className="space-y-4">
-        <h3 className="text-lg md:text-xl font-semibold">4. Physical Limitations & Precautions</h3>
-        <textarea
-          className="input w-full min-h-[120px] resize-y"
-          placeholder="Medications, recent surgeries, or supports used (if any)"
-          value={formData.precautions}
-          onChange={(e) => setFormData({...formData, precautions: e.target.value})}
-        />
-      </section>
+                {/* 6. Consent */}
+                <section className="space-y-4">
+                  <label className="flex items-start gap-3 text-sm leading-relaxed">
+                    <input
+                      type="checkbox"
+                      checked={formData.consent.yogaUnderstanding}
+                      onChange={(e) =>
+                        handleConsent("yogaUnderstanding", e.target.checked)
+                      }
+                      className="checkbox mt-1 shrink-0"
+                    />
+                    <span>
+                      I understand Yoga Therapy is complementary and not a
+                      replacement for medical treatment.
+                    </span>
+                  </label>
+                  <label className="flex items-start gap-3 text-sm leading-relaxed">
+                    <input
+                      type="checkbox"
+                      checked={formData.consent.healthUpdates}
+                      onChange={(e) =>
+                        handleConsent("healthUpdates", e.target.checked)
+                      }
+                      className="checkbox mt-1 shrink-0"
+                    />
+                    <span>
+                      I agree to inform the instructor of any changes in health
+                      or medication.
+                    </span>
+                  </label>
+                  <input
+                    className="input w-full"
+                    placeholder="Committed practice days per week"
+                    value={formData.consent.committedDays}
+                    onChange={(e) =>
+                      handleChange("consent", "committedDays", e.target.value)
+                    }
+                  />
+                </section>
 
-      {/* 5. Body Awareness */}
-      <section className="space-y-4">
-        <h3 className="text-lg md:text-xl font-semibold">5. Body Awareness Chart</h3>
-        <textarea
-          className="input w-full min-h-[140px] resize-y"
-          placeholder="Describe location, type, and trigger of discomfort"
-          value={formData.bodyAwareness}
-          onChange={(e) => setFormData({...formData, bodyAwareness: e.target.value})}
-        />
-      </section>
-
-      {/* 6. Consent */}
-      <section className="space-y-4">
-        <label className="flex items-start gap-3 text-sm leading-relaxed">
-          <input
-            type="checkbox"
-            checked={formData.consent.yogaUnderstanding}
-            onChange={(e) => handleConsent("yogaUnderstanding", e.target.checked)}
-            className="checkbox mt-1 shrink-0"
-          />
-          <span>I understand Yoga Therapy is complementary and not a replacement for medical treatment.</span>
-        </label>
-        <label className="flex items-start gap-3 text-sm leading-relaxed">
-          <input
-            type="checkbox"
-            checked={formData.consent.healthUpdates}
-            onChange={(e) => handleConsent("healthUpdates", e.target.checked)}
-            className="checkbox mt-1 shrink-0"
-          />
-          <span>I agree to inform the instructor of any changes in health or medication.</span>
-        </label>
-        <input
-          className="input w-full"
-          placeholder="Committed practice days per week"
-          value={formData.consent.committedDays}
-          onChange={(e) => handleChange("consent", "committedDays", e.target.value)}
-        />
-      </section>
-
-      {/* Submit */}
-      <div className="pt-6 flex flex-col">
-        <button
-          type="submit"
-          className="w-full sm:w-auto px-10 py-4 rounded-2xl bg-primary text-primary-foreground font-semibold tracking-wide shadow-lg hover:scale-105 transition"
-        >
-          Submit Intake Form
-        </button>
-      </div>
-    </form>
-  </div>
-</section>
+                {/* Submit */}
+                <div className="pt-6 flex flex-col">
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto px-10 py-4 rounded-2xl bg-primary text-primary-foreground font-semibold tracking-wide shadow-lg hover:scale-105 transition"
+                  >
+                    Submit Intake Form
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
         </div>
       </section>
     </>
@@ -4418,7 +4580,10 @@ const AshtangaLayout = ({
                 </h2>
 
                 <ul className="max-w-3xl mx-auto space-y-4 bg-secondary/40 backdrop-blur-md border border-border rounded-2xl p-6 shadow-sm">
-                  {program.whoShouldAttend.map((item, index) => (
+                  {(Array.isArray(program.whoShouldAttend)
+                    ? program.whoShouldAttend
+                    : []
+                  ).map((item, index) => (
                     <li
                       key={index}
                       className="flex items-start gap-3 text-muted-foreground leading-relaxed"

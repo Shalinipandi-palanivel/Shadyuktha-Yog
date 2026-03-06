@@ -5,7 +5,7 @@ import logo from "@/assets/shadyuktha_logo.jpg";
 
 const teachers = [
   { name: "Shalinipandi", role: "Founder-Director", specialization: "Hatha Yoga, Ashtanga, YCB Training", image: logo },
-  { name: "Dr. Meera Krishnan", role: "Therapeutic Yoga Lead", specialization: "DPYT, Yoga Chikitsa, Anatomy", image: logo },
+  { name: "Brindha", role: "Therapeutic Yoga Lead", specialization: "DPYT, Yoga Chikitsa, Anatomy", image: logo },
   { name: "Arvind Sharma", role: "Ashtanga & Pranayama", specialization: "Ashtanga Series, Pranayama Mastery", image: logo },
   { name: "Priya Nair", role: "Kids & Prenatal Yoga", specialization: "Children's Yoga, Maternity Wellness", image: logo },
 ];
@@ -37,7 +37,7 @@ const MeetTeachersSection = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/Shadyuktha-Yog/teachers" className="gradient-green text-primary-foreground px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 hover:opacity-90 transition-opacity">
+          <Link to="/teachers" className="gradient-green text-primary-foreground px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 hover:opacity-90 transition-opacity">
             View All Teachers <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

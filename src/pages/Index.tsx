@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <main className="max-w-[100vw] overflow-x-hidden">
       <HeroSection />
-      {/* <PartnerLogosSection /> */}
+      <PartnerLogosSection />
       <ProgramsSection />
       {/* <ProgramsCardSection /> */}
       <SadhanaLevelsSection />

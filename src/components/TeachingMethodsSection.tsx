@@ -51,7 +51,7 @@ function ImageStack({ images }: { images: string[] }) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="col-span-2 row-span-2 rounded-3xl overflow-hidden shadow-2xl h-[420px]"
+        className="col-span-2 row-span-2 rounded-3xl overflow-hidden shadow-2xl h-[520px]"
       >
         <img src={images[0]} className="w-full h-full object-cover" alt="" />
       </motion.div>
@@ -73,7 +73,7 @@ function ImageStack({ images }: { images: string[] }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="rounded-2xl overflow-hidden shadow-xl h-[200px]"
+        className="rounded-2xl overflow-hidden shadow-xl h-[300px]"
       >
         <img src={images[2]} className="w-full h-full object-cover" alt="" />
       </motion.div>

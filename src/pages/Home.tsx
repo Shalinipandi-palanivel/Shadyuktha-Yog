@@ -1,6 +1,6 @@
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { ArrowRight, Activity, BookOpen, Heart, UserCheck, Layout } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -65,12 +65,12 @@ export default function Home() {
               A holistic journey of <span className="text-accent font-semibold">Sarira</span> (Body), <span className="text-accent font-semibold">Prana</span> (Breath), and <span className="text-accent font-semibold">Citta</span> (Mind).
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/sadhana">
+              <Link to="/sadhana">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white border-2 border-transparent text-lg px-8 py-6 rounded-full">
                   Start Your Journey
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary text-lg px-8 py-6 rounded-full bg-transparent">
                   Contact Us
                 </Button>
@@ -96,7 +96,7 @@ export default function Home() {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <Link href={pillar.link}>
+              <Link to={pillar.link}>
                 <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-border group cursor-pointer h-full flex flex-col items-center text-center">
                   <div className="mb-6 p-4 bg-secondary/30 rounded-full group-hover:scale-110 transition-transform duration-300">
                     {pillar.icon}
@@ -132,7 +132,7 @@ export default function Home() {
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Whether you are looking to build strength, manage stress, or heal from a chronic condition, our structured programs are designed to meet you where you are.
             </p>
-            <Link href="/philosophy">
+            <Link to="/philosophy">
               <Button variant="default" size="lg" className="rounded-full px-8">
                 Read Our Philosophy
               </Button>

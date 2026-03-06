@@ -16,14 +16,14 @@ const Footer = () => {
         {/* Main Row */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8">
           {/* Left: Brand */}
-          <div className="flex flex-col gap-4 md:w-1/4">
-            <div className="flex items-center gap-3">
-            <img
-  src={logo}
-  alt="Shadyuktha Yog"
-  className="h-24 w-24 rounded-full object-cover"
-/>
-              <h3 className="font-serif text-2xl font-bold">Shadyuktha Yog</h3>
+          <div className="flex flex-col gap-4 md:w-1/4 text-center md:text-left mx-auto md:mx-0">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-3 justify-center md:justify-start">
+              <img
+                src={logo}
+                alt="Shadyuktha Yog"
+                className="h-24 w-24 rounded-full object-cover"
+              />
+             
             </div>
             <p className="text-sm opacity-80 text-white leading-relaxed">
               Redefining self-discovery through traditional Yoga Sastra, modern
@@ -33,17 +33,6 @@ const Footer = () => {
 
           {/* Center: Programs & Quick Links */}
           <div className="flex flex-col md:flex-row md:gap-12 md:w-1/2 justify-center">
-            {/* <div>
-              <h4 className="font-serif text-lg font-semibold mb-4 text-center md:text-left">Programs</h4>
-              <ul className="flex flex-col gap-2 text-sm opacity-80 text-center md:text-left">
-                <li><Link to="/programs/ycb-level-1" className="hover:opacity-100">YCB Level 1</Link></li>
-                <li><Link to="/programs/ycb-level-2" className="hover:opacity-100">YCB Level 2</Link></li>
-                <li><Link to="/programs/ycb-level-3" className="hover:opacity-100">YCB Level 3</Link></li>
-                <li><Link to="/programs/therapeutic-yoga" className="hover:opacity-100">Therapeutic Yoga</Link></li>
-                <li><Link to="/programs/ashtanga" className="hover:opacity-100">Ashtanga Primary Series</Link></li>
-              </ul>
-            </div> */}
-
             <div>
               <h4 className="font-serif text-lg font-semibold mb-4 text-center md:text-left">
                 Quick Links
@@ -84,25 +73,28 @@ const Footer = () => {
           </div>
 
           {/* Right: Contact */}
-          {/* Right: Contact */}
-          <div className="flex flex-col gap-4 md:w-1/4 text-left">
+
+          <div className="flex flex-col gap-4 md:w-1/4 text-left md:text-left text-center md:text-left mx-auto md:mx-0">
             <h4 className="font-serif text-lg font-semibold mb-4">Contact</h4>
             <ul className="flex flex-col gap-2 text-sm opacity-80">
-              <li className="flex items-center gap-2">
+              <li className="flex items-center justify-center md:justify-start gap-2">
                 <Mail className="w-4 h-4" /> info@shadyukthayog.com
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center justify-center md:justify-start gap-2">
                 <Phone className="w-4 h-4" /> +91 98765 43210
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start justify-center md:justify-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5" /> Online Platform – Global
                 Access
               </li>
             </ul>
 
             {/* Social Media Icons directly below Contact */}
-            <div className="flex gap-4 mt-4">
-              <a href="#" className="hover:opacity-100 opacity-80">
+            <div className="flex gap-4 mt-4 justify-center md:justify-start">
+              <a
+                href="https://www.instagram.com/shadyuktha_yog?igsh=MTV6eXNvZzE1NGQ2dw=="
+                className="hover:opacity-100 opacity-80"
+              >
                 <Instagram className="w-6 h-6" />
               </a>
               <a href="#" className="hover:opacity-100 opacity-80">

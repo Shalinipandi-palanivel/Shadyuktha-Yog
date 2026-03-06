@@ -172,7 +172,7 @@ const YCB = () => {
             traditional Yoga Sastra and modern therapeutic principles.
           </div>
           <Link
-            to="/Shadyuktha-Yog/contact"
+            to="/contact"
             className="inline-block px-8 py-3 bg-primary-foreground  text-black font-semibold rounded-full shadow-md hover:scale-105 transition-transform"
           >
            Enquire Now

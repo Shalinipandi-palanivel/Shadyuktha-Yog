@@ -1,18 +1,28 @@
-import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import { Star } from "lucide-react";
+import { AnimateOnScroll } from '@/components/AnimateOnScroll';
+import Slider from 'react-slick';
+import { Star } from 'lucide-react';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const testimonials = [
-  { name: "Priya Sharma", role: "YCB Level 2 Graduate", text: "Shadyuktha Yog transformed my understanding of yoga. The structured curriculum and Shalini's guidance made the YCB certification journey deeply rewarding. I now confidently teach yoga in my community.", rating: 5 },
-  { name: "Rajesh Kumar", role: "Therapeutic Yoga Student", text: "After years of chronic back pain, the DPYT approach helped me manage my condition naturally. The personalized attention from the therapist was unmatched. I feel a decade younger.", rating: 5 },
-  { name: "Ananya Patel", role: "Ashtanga Practitioner", text: "The Ashtanga Primary Series sessions are intense yet mindful. I've gained incredible strength and mental clarity in just 3 months. The alignment corrections are spot on.", rating: 5 },
-  { name: "Meera Devi", role: "Prenatal Yoga Student", text: "The prenatal yoga sessions were exactly what I needed during my pregnancy. Safe, nurturing, and deeply calming for both me and my baby. Highly recommended for all expecting mothers.", rating: 5 },
-  { name: "Arjun Nair", role: "Corporate Workshop Attendee", text: "Our team productivity increased noticeably after the corporate yoga workshops. A unique and valuable wellness initiative that everyone loved.", rating: 5 },
-  { name: "Kavitha Rangan", role: "Parent – Kids Yoga", text: "My daughter loves the Glow & Grow program! She's more focused at school, sleeps better, and looks forward to every session. Thank you Shalini!", rating: 5 },
-  { name: "Dr. Suresh Menon", role: "YCB Level 3 Graduate", text: "The depth of philosophical knowledge combined with practical teaching methodology makes this program exceptional. I'm now equipped to train other yoga teachers.", rating: 5 },
-  { name: "Lakshmi Iyer", role: "Pranayama Student", text: "The pranayama and mudra sessions opened a whole new dimension of practice for me. My anxiety has significantly reduced and I sleep much better now.", rating: 5 },
+  { name: 'Priya Sharma', role: 'YCB Level 2 Graduate', text: "Shadyuktha Yog transformed my understanding of yoga. The structured curriculum and Shalini's guidance made the YCB certification journey deeply rewarding. I now confidently teach yoga in my community.", rating: 5, image: '/images/testi-priya.jpg' },
+  { name: 'Rajesh Kumar', role: 'Therapeutic Yoga Student', text: "After years of chronic back pain, the DPYT approach helped me manage my condition naturally. The personalized attention from the therapist was unmatched. I feel a decade younger.", rating: 5, image: '/images/testi-rajesh.jpg' },
+  { name: 'Ananya Patel', role: 'Ashtanga Practitioner', text: "The Ashtanga Primary Series sessions are intense yet mindful. I've gained incredible strength and mental clarity in just 3 months. The alignment corrections are spot on.", rating: 5, image: '/images/testi-ananya.jpg' },
+  // ...add other testimonials with image paths
 ];
 
 const TestimonialsPage = () => {
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 6000,
+  };
+
   return (
     <main className="pt-20">
       <section className="section-padding gradient-green-light">
@@ -27,27 +37,33 @@ const TestimonialsPage = () => {
             </p>
           </AnimateOnScroll>
 
-          {/* Written testimonials */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {/* Carousel Testimonials */}
+         <Slider {...sliderSettings} className="mb-16">
             {testimonials.map((t, i) => (
-              <AnimateOnScroll key={i} animation="animate-fade-in-up" delay={i * 100}>
-                <div className="bg-card rounded-2xl p-6 border border-border hover-lift h-full flex flex-col">
-                  <div className="flex gap-1 mb-3">
+              <div key={i} className="flex flex-col md:flex-row items-center gap-6  mb-6  ounded-2xl p-8 hover-lift max-w-3xl mx-auto">
+                {/* Left Side Image */}
+                <div className="w-full md:w-1/3 flex-shrink-0">
+                  <img src={t.image} alt={t.name} className="rounded-2xl w-full h-full object-cover" />
+                </div>
+
+                {/* Right Side Content */}
+                <div className="w-full md:w-2/3 flex flex-col pl-6">
+                  <div className="flex gap-2 mb-4">
                     {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-yoga-gold text-yoga-gold" />
+                      <Star key={j} className="w-5 h-5 fill-yoga-gold text-yoga-gold" />
                     ))}
                   </div>
-                  <p className="text-foreground leading-relaxed mb-4 italic flex-1">"{t.text}"</p>
-                  <div className="border-t border-border pt-4">
-                    <p className="font-serif font-bold text-foreground">{t.name}</p>
+                  <p className="text-foreground leading-relaxed mb-6 italic text-lg">"{t.text}"</p>
+                  <div className="border-t  pt-4">
+                    <p className="font-serif font-bold text-foreground text-xl">{t.name}</p>
                     <p className="text-sm text-muted-foreground">{t.role}</p>
                   </div>
                 </div>
-              </AnimateOnScroll>
+              </div>
             ))}
-          </div>
+          </Slider>
 
-          {/* Video testimonials */}
+          {/* Video Testimonials */}
           <AnimateOnScroll>
             <h2 className="font-serif text-3xl font-bold text-center text-foreground mb-8">Video Testimonials</h2>
           </AnimateOnScroll>
