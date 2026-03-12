@@ -53,7 +53,7 @@ const ContactSection = () => {
       },
     };
 
-    console.log("SENDING PAYLOAD:", payload);
+    // console.log("SENDING PAYLOAD:", payload);
 
     try {
       const res = await fetch(
