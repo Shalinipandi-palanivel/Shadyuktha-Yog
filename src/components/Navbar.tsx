@@ -182,7 +182,7 @@ const Navbar: React.FC<NavbarProps> = ({ selectedPost }) => {
               rel="noopener noreferrer"
               className="gradient-green text-primary-foreground px-5 py-2.5 rounded-full text-md font-bold font-semibold hover:opacity-40 transition-opacity"
             >
-              Book Now
+              Join Now
             </a>
           </div>
 

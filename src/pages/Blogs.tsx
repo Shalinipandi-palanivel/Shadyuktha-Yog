@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AnimatePresence } from "framer-motion";
@@ -11,6 +11,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Upload } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import BlogCard from "./BlogCard";
+
+const BlogModal = lazy(() => import("./BlogModal"));
 
 const categories = [
   "All",
@@ -33,7 +36,8 @@ const blogPosts = [
     date: "Feb 20, 2026",
     author: "Shalinipandi",
     readTime: "8 min",
-    image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/sunsalutation.jpg",
+    image:
+      "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/sunsalutation.jpg",
   },
   {
     id: 2,
@@ -44,7 +48,8 @@ const blogPosts = [
     date: "Feb 15, 2026",
     author: "Shalinipandi",
     readTime: "6 min",
-    image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/Pranayama-workshop.png",
+    image:
+      "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/Pranayama-workshop.png",
   },
   {
     id: 3,
@@ -55,7 +60,8 @@ const blogPosts = [
     date: "Feb 10, 2026",
     author: "Shalinipandi",
     readTime: "10 min",
-    image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/yoga-anatomy.jpg",
+    image:
+      "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/yoga-anatomy.jpg",
   },
   {
     id: 4,
@@ -66,7 +72,8 @@ const blogPosts = [
     date: "Feb 5, 2026",
     author: "Shalinipandi",
     readTime: "12 min",
-    image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/limbs.png",
+    image:
+      "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/limbs.png",
   },
   {
     id: 5,
@@ -88,7 +95,8 @@ const blogPosts = [
     date: "Jan 25, 2026",
     author: "Shalinipandi",
     readTime: "7 min",
-    image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/kids-yoga.jpg",
+    image:
+      "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/kids-yoga.jpg",
   },
   {
     id: 7,
@@ -99,7 +107,8 @@ const blogPosts = [
     date: "Jan 20, 2026",
     author: "Shalinipandi",
     readTime: "9 min",
-    image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/therapy-yoga.jpg",
+    image:
+      "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/therapy-yoga.jpg",
   },
   {
     id: 8,
@@ -110,7 +119,8 @@ const blogPosts = [
     date: "Jan 15, 2026",
     author: "Shalinipandi",
     readTime: "6 min",
-    image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/nadi shodana.png",
+    image:
+      "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/nadi shodana.png",
   },
   {
     id: 9,
@@ -121,7 +131,8 @@ const blogPosts = [
     date: "Jan 10, 2026",
     author: "Shalinipandi",
     readTime: "8 min",
-    image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/Anatomy.jpg",
+    image:
+      "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/Anatomy.jpg",
   },
 ];
 const fullContent: Record<
@@ -163,7 +174,8 @@ const fullContent: Record<
 
       {
         title: "How to Perform",
-        image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/surya-namaskar.jpg",
+        image:
+          "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/surya-namaskar.jpg",
         content: (
           <ol className="list-decimal list-inside space-y-2">
             <li>Start in Tadasana (Mountain Pose)</li>
@@ -354,7 +366,8 @@ const fullContent: Record<
     sections: [
       {
         title: "Benefits of Strengthening the Pelvic Floor",
-        image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/bridge-pose.jpg",
+        image:
+          "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/bridge-pose.jpg",
         content: (
           <ul className="list-disc list-inside space-y-3">
             <li>
@@ -673,7 +686,8 @@ const fullContent: Record<
 
       {
         title: "Simple 10-Minute Desk Yoga Routine",
-        image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/desk-job.png",
+        image:
+          "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/desk-job.png",
         content: (
           <ol className="list-decimal list-inside space-y-3">
             <li>
@@ -880,22 +894,22 @@ const fullContent: Record<
               </p>
             </div>
             {/* Balloon Breathing */}
-       <div className="space-y-3">
-  <div className="flex justify-center p-4">
-    <img
-      src="https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/ballon-breathing.png"
-      loading="lazy"
-      alt="Balloon Breathing Yoga"
-      className="w-full max-w-md rounded-xl shadow-md"
-    />
-  </div>
-  <p className="p-3">
-    <strong>Balloon Breathing</strong> – A fun breathing exercise where children
-    imagine their belly as a balloon, slowly inflating while inhaling and
-    gently deflating while exhaling. This helps improve focus, relaxation,
-    and breathing awareness.
-  </p>
-</div>
+            <div className="space-y-3">
+              <div className="flex justify-center p-4">
+                <img
+                  src="https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/ballon-breathing.png"
+                  loading="lazy"
+                  alt="Balloon Breathing Yoga"
+                  className="w-full max-w-md rounded-xl shadow-md"
+                />
+              </div>
+              <p className="p-3">
+                <strong>Balloon Breathing</strong> – A fun breathing exercise
+                where children imagine their belly as a balloon, slowly
+                inflating while inhaling and gently deflating while exhaling.
+                This helps improve focus, relaxation, and breathing awareness.
+              </p>
+            </div>
 
             {/* Animal Walks */}
             <div className="space-y-3">
@@ -1120,7 +1134,8 @@ const fullContent: Record<
     sections: [
       {
         title: "Benefits of Nadi Shodhana",
-        image: "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/nadi-shodana.png",
+        image:
+          "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/nadi-shodana.png",
         content: (
           <ul className="list-disc list-inside space-y-3">
             <li>
@@ -1292,7 +1307,8 @@ const fullContent: Record<
 
       {
         title: "How to Practice Backbends Safely",
-        image:"https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/Dhanurasana.jpg",
+        image:
+          "https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/Dhanurasana.jpg",
         content: (
           <ul className="list-disc list-inside space-y-3">
             <li>
@@ -1391,45 +1407,71 @@ const fullContent: Record<
 };
 
 const Blogs = () => {
-  
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [expandedPost, setExpandedPost] = useState<number | null>(null);
-  const [guestSubmitted, setGuestSubmitted] = useState(false);
-  const [showModalContent, setShowModalContent] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
-  const [file, setFile] = useState<File | null>(null);
+
+  const [file, setFile] = useState(null);
+  const [guestSubmitted, setGuestSubmitted] = useState(false);
+  const [duplicateFilePopup, setDuplicateFilePopup] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     bio: "",
   });
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [duplicateFilePopup, setDuplicateFilePopup] = useState(false);
 
-  const { toast } = useToast();
+  // Prevent background scroll
+  useEffect(() => {
+    if (selectedPost) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
 
-  // Handle input changes
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value, files } = e.target as any;
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedPost]);
+
+  // Search + category filter
+  const filteredPosts = blogPosts.filter((post) => {
+    const matchCategory =
+      activeCategory === "All" || post.category === activeCategory;
+
+    const matchSearch =
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return matchCategory && matchSearch;
+  });
+
+  // Form change
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
 
     if (name === "document") {
       const selectedFile = files[0];
+
       if (selectedFile) {
         setFile(selectedFile);
         setError("");
       }
     } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
     }
   };
 
-  // Handle form submission
-  const handleGuestSubmit = async (e: React.FormEvent) => {
+  // Guest blog submit
+  const handleGuestSubmit = async (e) => {
     e.preventDefault();
+
     if (!file) {
       setError("Please upload a document");
       return;
@@ -1440,6 +1482,7 @@ const Blogs = () => {
 
     try {
       const formDataToSend = new FormData();
+
       formDataToSend.append("name", formData.name);
       formDataToSend.append("email", formData.email);
       formDataToSend.append("bio", formData.bio);
@@ -1459,7 +1502,6 @@ const Blogs = () => {
         setGuestSubmitted(true);
         setFormData({ name: "", email: "", bio: "" });
         setFile(null);
-        toast({ description: "Guest blog submitted successfully!" });
       } else {
         if (result.message?.toLowerCase().includes("already uploaded")) {
           setDuplicateFilePopup(true);
@@ -1467,322 +1509,123 @@ const Blogs = () => {
           setError(result.message || "Submission failed");
         }
       }
-    } catch (err: any) {
-      setError("Network error: " + err.message);
+    } catch (err) {
+      setError("Network error");
     } finally {
       setLoading(false);
     }
   };
 
-  // Handle modal show/hide
-  useEffect(() => {
-    if (selectedPost) {
-      const timer = setTimeout(() => setShowModalContent(true), 50);
-      return () => clearTimeout(timer);
-    } else {
-      setShowModalContent(false);
-    }
-  }, [selectedPost]);
-
-  // Filter blog posts
-  const filteredPosts = blogPosts.filter((post) => {
-    const matchCategory =
-      activeCategory === "All" || post.category === activeCategory;
-    const matchSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCategory && matchSearch;
-  });
-
   return (
-    <>
-    <Helmet>
-        <title>{selectedPost?.title || "Yoga Blogs | Shadyuktha Yog"}</title>
-        <meta
-          name="description"
-          content={selectedPost?.excerpt || "Read yoga blogs about asanas, pranayama and wellness"}
-        />
-      </Helmet>
     <main className="pt-20">
+      {/* HERO */}
       <section className="section-padding gradient-green-light">
-        <div className="mx-auto">
-          {/* Hero Section */}
-          <AnimateOnScroll className="text-center mb-10">
-            <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-2">
-              Knowledge Hub
-            </p>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground">
-              Yoga <span className="text-gradient-green">Blogs</span>
-            </h1>
-            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              Explore articles on asana, pranayama, anatomy, philosophy, and
-              holistic wellness.
-            </p>
-            <div className="decorative-line mx-auto mt-6" />
-          </AnimateOnScroll>
+        <div className="text-center mb-10">
+          <h1 className="text-4xl font-serif font-bold">Yoga Blogs</h1>
 
-          {/* Search + Categories */}
-          <div className="max-w-6xl mx-auto mb-16">
-            <div className="relative max-w-xl mx-auto mb-8">
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search yoga articles..."
-                className="w-full pl-12 pr-5 py-4 rounded-full border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-primary outline-none"
-              />
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                    activeCategory === cat
-                      ? "bg-[#8a6f5a] text-white shadow"
-                      : "bg-white border border-gray-200 hover:border-[#8a6f5a]"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Blog Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 max-w-7xl mx-auto">
-            {filteredPosts.map((post, i) => (
-              <AnimateOnScroll
-                key={post.id}
-                animation="animate-fade-in"
-                delay={i * 100}
-              >
-                <article className="group cursor-pointer">
-                  <div className="relative overflow-hidden rounded-2xl">
-                    <img
-                      src={post.image}
-                      loading="lazy"
-                      alt={post.title}
-                      className="w-full h-[320px] object-cover group-hover:scale-105 transition duration-500"
-                    />
-                    <div className="absolute bottom-4 left-4 bg-[#e7d7c8] text-gray-800 text-sm px-4 py-2 rounded-lg shadow">
-                      {post.date}
-                    </div>
-                    <div className="absolute top-4 left-4 bg-white/90 text-xs px-3 py-1 rounded-full font-medium">
-                      {post.category}
-                    </div>
-                  </div>
-
-                  <div className="mt-6 text-center">
-                    <h3 className="font-serif text-lg text-gray-800 leading-snug group-hover:text-primary transition">
-                      {post.title}
-                    </h3>
-                  </div>
-
-                  {fullContent[post.id] && (
-                    <button
-                      onClick={() => setSelectedPost(post)}
-                      className="mt-5 text-sm inline-flex items-center gap-2 px-4 py-2 text-primary rounded-full hover:bg-white hover:text-accent transition-all"
-                    >
-                      READ ARTICLE → <ChevronRight className="w-4 h-4" />
-                    </button>
-                  )}
-
-                  {/* Modal */}
-                  <AnimatePresence>
-                    {selectedPost && showModalContent && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-6"
-                      >
-                        <motion.div
-                          initial={{ scale: 0.95, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          exit={{ scale: 0.95, opacity: 0 }}
-                          transition={{ duration: 0.6, ease: "easeOut" }}
-                          className="relative w-[100%] max-w-7xl max-h-[95vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-gray-200"
-                          style={{
-                            backgroundImage: "url('/images/lotus-bg.png')",
-                            backgroundSize: "contain",
-                            backgroundRepeat: "no-repeat",
-                            backgroundPosition: "center top",
-                          }}
-                        >
-                          <motion.button
-                            onClick={() => setSelectedPost(null)}
-                            whileHover={{ scale: 1.2, rotate: 90 }}
-                            className="absolute top-6 right-6 bg-white shadow-lg w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold z-50"
-                          >
-                            ✕
-                          </motion.button>
-
-                          <motion.div className="relative w-full">
-                            <img
-                              src={selectedPost.image}
-                              alt={selectedPost.title}
-                              loading="lazy"
-                              className="w-full max-h-[80vh] object-contain rounded-t-3xl shadow-lg mx-auto"
-                            />
-                            <div className="absolute bottom-6 left-5 md:left-10 bg-white/80 backdrop-blur px-4 py-2 rounded-xl shadow">
-                              <p className="text-sm text-gray-600">
-                                {selectedPost.date}
-                              </p>
-                            </div>
-                          </motion.div>
-
-                          <div className="max-w-5xl mx-auto px-3 py-16 text-center">
-                            <motion.h1
-                              initial={{ scale: 0.8, opacity: 0 }}
-                              animate={{ scale: 1, opacity: 1 }}
-                              transition={{ duration: 0.6, delay: 0.2 }}
-                              className="text-4xl md:text-5xl lg:text-6xl font-serif mb-12 text-gray-800"
-                            >
-                              {selectedPost.title}
-                            </motion.h1>
-
-                            <motion.div
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ duration: 0.6, delay: 0.4 }}
-                              className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-20"
-                            >
-                              {fullContent[selectedPost.id]?.overview}
-                            </motion.div>
-
-                            {/* Sections */}
-                            {fullContent[selectedPost.id]?.sections?.map(
-                              (section, i) => (
-                                <motion.div
-                                  key={i}
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{
-                                    duration: 0.6,
-                                    delay: 0.5 + i * 0.2,
-                                  }}
-                                  className="mb-20"
-                                >
-                                  {section.image ? (
-                                    <div className="mb-16 flex justify-center">
-                                      <motion.div
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ duration: 0.7 }}
-                                        className="max-w-4xl mx-auto"
-                                      >
-                                        <h2 className="text-3xl font-semibold text-primary mb-6 text-center">
-                                          {section.title}
-                                        </h2>
-                                        <motion.img
-                                          src={section.image}
-                                          alt="Pose Illustration"
-                                          loading="lazy"
-                                          className="w-full h-auto object-cover rounded-xl shadow-lg hover:scale-105 transition mb-6"
-                                        />
-                                        <div className="text-center">
-                                          <ul className="inline-block text-left list-disc space-y-2">
-                                            {section.content}
-                                          </ul>
-                                        </div>
-                                      </motion.div>
-                                    </div>
-                                  ) : (
-                                    <div className="flex flex-col items-center text-lg text-gray-700 leading-relaxed space-y-4">
-                                      <h3 className="text-2xl font-semibold text-primary mb-4 text-center">
-                                        {section.title}
-                                      </h3>
-                                      <div className="text-center">
-                                        <ul className="inline-block text-left list-disc space-y-2">
-                                          {section.content}
-                                        </ul>
-                                      </div>
-                                    </div>
-                                  )}
-                                </motion.div>
-                              ),
-                            )}
-
-                            {/* CTA */}
-                            <motion.div
-                              initial={{ scale: 0.9, opacity: 0 }}
-                              animate={{ scale: 1, opacity: 1 }}
-                              transition={{ duration: 0.6, delay: 1 }}
-                              className="mt-20 text-center bg-gradient-to-r max-w-5xl mx-auto from-primary/90 to-primary px-3 py-8 rounded-3xl shadow-xl"
-                            >
-                              <h3 className="text-3xl font-serif font-semibold mb-4 text-white">
-                                Deepen Your Yoga Practice
-                              </h3>
-                              <p className="text-lg text-white max-w-4xl mb-8">
-                                Struggling with alignment, breathing, or
-                                consistency? Join personalized yoga sessions and
-                                experience transformation through guided
-                                practice.
-                              </p>
-                              <a
-                                href={`https://wa.me/917200448918?text=${encodeURIComponent(
-                                  "Hello! I want to know more about your yoga programs.",
-                                )}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block px-10 py-4 text-lg font-medium bg-white text-primary rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition"
-                              >
-                                Get Guidance
-                              </a>
-                            </motion.div>
-                          </div>
-                        </motion.div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </article>
-              </AnimateOnScroll>
-            ))}
-          </div>
-
-          {filteredPosts.length === 0 && (
-            <p className="text-center text-muted-foreground mt-8">
-              No articles found for this filter.
-            </p>
-          )}
-        </div>
-      </section>
-
-      {/* Guest Blog Section */}
-      <div className="max-w-3xl mx-auto glass-card rounded-3xl p-8 md:p-12 mt-10 border-t-4 border-[#198754]">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-serif font-bold text-[#0f5132] mb-3">
-            Become a Guest Author
-          </h2>
-          <p className="text-gray-600">
-            Share your yogic journey, case studies, or philosophy with our
-            community.
+          <p className="text-muted-foreground mt-4">
+            Explore yoga articles on asana, pranayama and wellness
           </p>
         </div>
 
+        {/* SEARCH */}
+        <div className="max-w-xl mx-auto mb-8">
+          <input
+            type="text"
+            placeholder="Search yoga articles..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full px-5 py-4 rounded-full border"
+          />
+        </div>
+
+        {/* CATEGORY FILTER */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-5 py-2 rounded-full ${
+                activeCategory === cat
+                  ? "bg-[#8a6f5a] text-white"
+                  : "bg-white border"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* BLOG GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 max-w-7xl mx-auto">
+          {filteredPosts.map((post) => (
+            <BlogCard
+              key={post.id}
+              post={post}
+              onRead={() => setSelectedPost(post)}
+            />
+          ))}
+        </div>
+
+        {filteredPosts.length === 0 && (
+          <p className="text-center mt-10 text-gray-500">No articles found.</p>
+        )}
+      </section>
+
+      {/* BLOG MODAL */}
+      {selectedPost && (
+        <Suspense fallback={<div className="text-center p-10">Loading...</div>}>
+          <BlogModal
+            post={selectedPost}
+            content={fullContent[selectedPost.id]}
+            onClose={() => setSelectedPost(null)}
+          />
+        </Suspense>
+      )}
+
+      {/* GUEST BLOG FORM */}
+      <div className="max-w-3xl mx-auto glass-card rounded-3xl p-8 md:p-12 mt-10 border-t-4 border-[#198754]">
+        {" "}
+        <div className="text-center mb-8">
+          {" "}
+          <h2 className="text-3xl font-serif font-bold text-[#0f5132] mb-3">
+            {" "}
+            Become a Guest Author{" "}
+          </h2>{" "}
+          <p className="text-gray-600">
+            {" "}
+            Share your yogic journey, case studies, or philosophy with our
+            community.{" "}
+          </p>{" "}
+        </div>{" "}
         {guestSubmitted ? (
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             className="flex flex-col items-center justify-center py-12 text-center"
           >
-            <CheckCircle2 className="w-20 h-20 text-[#198754] mb-4" />
+            {" "}
+            <CheckCircle2 className="w-20 h-20 text-[#198754] mb-4" />{" "}
             <h3 className="text-2xl font-serif font-bold text-[#0f5132]">
-              Thank You!
-            </h3>
-            <p className="text-gray-600">Your submission has been received.</p>
+              {" "}
+              Thank You!{" "}
+            </h3>{" "}
+            <p className="text-gray-600">
+              Your submission has been received.
+            </p>{" "}
           </motion.div>
         ) : (
           <form onSubmit={handleGuestSubmit} className="space-y-6">
-            {/* Form Fields */}
+            {" "}
+            {/* Form Fields */}{" "}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {" "}
               <div className="space-y-2">
+                {" "}
                 <label className="text-sm font-medium text-[#0f5132]">
-                  Your Name
-                </label>
+                  {" "}
+                  Your Name{" "}
+                </label>{" "}
                 <Input
                   required
                   name="name"
@@ -1790,12 +1633,14 @@ const Blogs = () => {
                   onChange={handleChange}
                   placeholder="Enter Your Name"
                   className="bg-white/20"
-                />
-              </div>
+                />{" "}
+              </div>{" "}
               <div className="space-y-2">
+                {" "}
                 <label className="text-sm font-medium text-[#0f5132]">
-                  Email Address
-                </label>
+                  {" "}
+                  Email Address{" "}
+                </label>{" "}
                 <Input
                   type="email"
                   required
@@ -1804,14 +1649,15 @@ const Blogs = () => {
                   onChange={handleChange}
                   placeholder="sample@example.com"
                   className="bg-white/20"
-                />
-              </div>
-            </div>
-
+                />{" "}
+              </div>{" "}
+            </div>{" "}
             <div className="space-y-2">
+              {" "}
               <label className="text-sm font-medium text-[#0f5132]">
-                Short Bio
-              </label>
+                {" "}
+                Short Bio{" "}
+              </label>{" "}
               <Textarea
                 required
                 name="bio"
@@ -1819,14 +1665,16 @@ const Blogs = () => {
                 onChange={handleChange}
                 placeholder="Tell us about your yoga background..."
                 className="bg-white/50 min-h-[100px]"
-              />
-            </div>
-
+              />{" "}
+            </div>{" "}
             <div className="space-y-2">
+              {" "}
               <label className="text-sm font-medium text-[#0f5132]">
-                Upload Document (.doc, .pdf)
-              </label>
+                {" "}
+                Upload Document (.doc, .pdf){" "}
+              </label>{" "}
               <div className="border-2 border-dashed border-[#198754]/30 rounded-xl p-8 text-center bg-white/30 hover:bg-[#198754]/5 transition-colors cursor-pointer relative">
+                {" "}
                 <input
                   type="file"
                   name="document"
@@ -1834,65 +1682,75 @@ const Blogs = () => {
                   accept=".doc,.docx,.pdf"
                   onChange={handleChange}
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                />
+                />{" "}
                 {file ? (
                   <>
-                    <CheckCircle2 className="w-10 h-10 text-green-600 mx-auto mb-3" />
+                    {" "}
+                    <CheckCircle2 className="w-10 h-10 text-green-600 mx-auto mb-3" />{" "}
                     <p className="text-sm font-semibold text-green-700">
-                      File Uploaded Successfully
-                    </p>
-                    <p className="text-xs text-gray-600 mt-1">{file.name}</p>
+                      {" "}
+                      File Uploaded Successfully{" "}
+                    </p>{" "}
+                    <p className="text-xs text-gray-600 mt-1">
+                      {file.name}
+                    </p>{" "}
                     <p className="text-xs text-gray-400 mt-2">
-                      Click to change file
-                    </p>
+                      {" "}
+                      Click to change file{" "}
+                    </p>{" "}
                   </>
                 ) : (
                   <>
-                    <Upload className="w-10 h-10 text-[#198754] mx-auto mb-3" />
+                    {" "}
+                    <Upload className="w-10 h-10 text-[#198754] mx-auto mb-3" />{" "}
                     <p className="text-sm text-[#0f5132] font-medium">
-                      Click to upload or drag and drop
-                    </p>
+                      {" "}
+                      Click to upload or drag and drop{" "}
+                    </p>{" "}
                     <p className="text-xs text-gray-500 mt-1">
-                      PDF or Word doc (Max 5MB)
-                    </p>
+                      {" "}
+                      PDF or Word doc (Max 5MB){" "}
+                    </p>{" "}
                   </>
-                )}
-              </div>
-            </div>
-
+                )}{" "}
+              </div>{" "}
+            </div>{" "}
             {duplicateFilePopup && (
               <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+                {" "}
                 <div className="bg-white p-8 rounded-2xl shadow-xl max-w-sm text-center relative">
+                  {" "}
                   <h3 className="text-lg font-semibold mb-4 text-red-600">
-                    File Name Already Uploaded
-                  </h3>
+                    {" "}
+                    File Name Already Uploaded{" "}
+                  </h3>{" "}
                   <p className="text-gray-700 mb-6">
-                    Please rename your file and try uploading again.
-                  </p>
+                    {" "}
+                    Please rename your file and try uploading again.{" "}
+                  </p>{" "}
                   <button
                     onClick={() => setDuplicateFilePopup(false)}
                     className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
                   >
-                    Close
-                  </button>
-                </div>
+                    {" "}
+                    Close{" "}
+                  </button>{" "}
+                </div>{" "}
               </div>
-            )}
-
-            {error && <p className="text-red-600">{error}</p>}
-
+            )}{" "}
+            {error && <p className="text-red-600">{error}</p>}{" "}
             <Button
               type="submit"
               disabled={loading}
               className="w-full bg-primary hover:bg-[#198754] text-white rounded-xl text-lg"
             >
-              {loading ? "Submitting..." : "Submit Article"}
-            </Button>
+              {" "}
+              {loading ? "Submitting..." : "Submit Article"}{" "}
+            </Button>{" "}
           </form>
-        )}
+        )}{" "}
       </div>
     </main>
-    </>
   );
 };
 

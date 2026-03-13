@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import axios from "axios";
+import ProgramCTA from "./ProgramCTA";
 
 import {
   ArrowLeft,
@@ -3315,37 +3316,16 @@ const YCBLayout = ({
             a profession. Step into the world of wellness, teaching, and
             personal growth.
           </p>
-          <Link
-            to="/#contact"
-            className="inline-block bg-white text-green-700 hover:bg-green-50 font-bold text-xl md:text-2xl px-10 md:px-14 py-5 rounded-full shadow-xl transition-all duration-300 hover:scale-105"
-          >
-            Enroll Now
-          </Link>
+         <a
+  href="https://wa.me/917200448918?text=Hi!%20I%20want%20to%20know%20details%20about%20yoga%20certification%20program"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block bg-white text-green-700 hover:bg-green-50 font-bold text-xl md:text-2xl px-10 md:px-14 py-5 rounded-full shadow-xl transition-all duration-300 hover:scale-105"
+>
+  Enroll Now
+</a>
         </div>
       </section>
-
-      {/* Other Programs */}
-      {/* <section className="py-16 container mx-auto max-w-7xl">
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-6 text-center">
-          Explore Other Programs
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allProgramsData
-            .filter(([key]) => key !== slug)
-            .map(([key, p]) => (
-              <Link
-                key={key}
-                to={`/programs/${key}`}
-                className="block bg-secondary p-6 rounded-2xl shadow-md hover:shadow-lg transition-all"
-              >
-                <h3 className="font-serif font-bold text-lg mb-2 text-foreground">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">{p.tagline}</p>
-              </Link>
-            ))}
-        </div>
-      </section> */}
 
       {/* FAQ Section */}
       <section className="py-16 container-fluid px-3 mx-auto max-w-5xl">
@@ -4635,7 +4615,7 @@ const AshtangaLayout = ({
     backdrop-blur-md
   "
             >
-              Investment ₹3,000
+              Investment ₹3,000 / Month
             </p>
           </section>
         </div>
@@ -4925,7 +4905,7 @@ const PranayamaLayout = ({
     backdrop-blur-md
   "
                 >
-                  Investment ₹3,500
+                  Investment ₹3,500 / Month
                 </p>
               </AnimateOnScroll>
             </div>
@@ -5126,7 +5106,7 @@ const KidsLayout = ({
     backdrop-blur-md
   "
             >
-              Investment ₹1,500
+              Investment ₹1,500 / Month
             </p>
           </section>
         </div>
@@ -5400,7 +5380,7 @@ const PrenatalLayout = ({
     backdrop-blur-md
   "
           >
-            Investment ₹4,000
+            Investment ₹4,000 / Month
           </p>
         </section>
       </section>
@@ -5427,8 +5407,13 @@ const ProgramDetail = () => {
   }
 
   return (
-    <main className="pt-20">
-      {program.layout === "ycb" && <YCBLayout program={program} slug={slug!} />}
+<main className="pt-20">
+  {/* YCB layout */}
+  {program.layout === "ycb" && <YCBLayout program={program} slug={slug!} />}
+
+  {/* All other layouts */}
+  {program.layout !== "ycb" && (
+    <>
       {program.layout === "therapeutic" && (
         <TherapeuticLayout program={program} slug={slug!} />
       )}
@@ -5450,7 +5435,14 @@ const ProgramDetail = () => {
       {program.layout === "standard" && (
         <YogaProgramLayout program={program} slug={slug!} />
       )}
-    </main>
+
+      {/* Global CTA for all non-YCB layouts except standard */}
+      {program.layout !== "standard" && (
+        <ProgramCTA programName={program.title || "Yoga Program"} />
+      )}
+    </>
+  )}
+</main>
   );
 };
 

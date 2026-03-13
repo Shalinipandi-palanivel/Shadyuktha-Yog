@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="flex flex-col gap-4 md:w-1/4 text-center md:text-left mx-auto md:mx-0">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-3 justify-center md:justify-start">
               <img
-                src="https://shadyukthayoga.s3.ap-south-1.amazonaws.com/assets/shadyuktha_logo.jpg"
+                src={logo}
                 alt="Shadyuktha Yog"
                 className="h-24 w-24 rounded-full object-cover"
               />
