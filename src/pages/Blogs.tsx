@@ -9,30 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Upload } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-
-import treepose from "@/assets/tree-pose.png";
-import butterfly from "@/assets/Butterfly-aditya.png";
-import warrrior from "@/assets/warrior-kids.png";
-import animalwalk from "@/assets/animal-walk.png";
-import plank from "@/assets/plank-dhanvi.png";
-import breathing from "@/assets/ballon-breathing.png";
-import kids from "@/assets/kids.png";
-import catcow from "@/assets/cat-cow.png";
-import deskjob from "@/assets/desk-job.png";
-import suryanamaskar1 from "@/assets/surya-namaskar.jpg";
-import nadishodana from "@/assets/nadi-shodana.png";
-import setubandhasana from "@/assets/bridge-pose.jpg";
-import dhanurasana from "@/assets/Dhanurasana.jpg";
-import suryanamaskar from "@/assets/sunsalutation.jpg";
-import pranayama from "@/assets/Pranayama-workshop.png";
-import therapy from "@/assets/therapy-yoga.jpg";
-import anatomy from "@/assets/Anatomy.jpg";
-import backbend from "@/assets/yoga-anatomy.jpg";
-import nadi from "@/assets/nadi shodana.png";
-import child from "@/assets/kids-yoga.jpg";
-import limbs from "@/assets/limbs.png";
-import desk from "@/assets/desk.jpg";
 
 const categories = [
   "All",
@@ -1413,12 +1391,13 @@ const fullContent: Record<
 };
 
 const Blogs = () => {
+  
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedPost, setExpandedPost] = useState<number | null>(null);
   const [guestSubmitted, setGuestSubmitted] = useState(false);
   const [showModalContent, setShowModalContent] = useState(false);
-  const [selectedPost, setSelectedPost] = useState<any>(null);
+  const [selectedPost, setSelectedPost] = useState(null);
   const [file, setFile] = useState<File | null>(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -1516,6 +1495,14 @@ const Blogs = () => {
   });
 
   return (
+    <>
+    <Helmet>
+        <title>{selectedPost?.title || "Yoga Blogs | Shadyuktha Yog"}</title>
+        <meta
+          name="description"
+          content={selectedPost?.excerpt || "Read yoga blogs about asanas, pranayama and wellness"}
+        />
+      </Helmet>
     <main className="pt-20">
       <section className="section-padding gradient-green-light">
         <div className="mx-auto">
@@ -1905,6 +1892,7 @@ const Blogs = () => {
         )}
       </div>
     </main>
+    </>
   );
 };
 
