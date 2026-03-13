@@ -2967,8 +2967,8 @@ const YCBLayout = ({
         </AnimateOnScroll>
 
         <AnimateOnScroll>
-          <section className=" pt-10 bg-gradient-to-b from-secondary/10 via-background to-secondary/10">
-            <div className="max-w-8xl mx-auto px-6 space-y-16">
+          <section className="container pt-10 bg-gradient-to-b from-secondary/10 via-background to-secondary/10">
+            <div className=" mx-auto px-6 space-y-16">
               {/* ================= HEADER ================= */}
               <header className="text-center max-w-3xl mx-auto space-y-4">
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
